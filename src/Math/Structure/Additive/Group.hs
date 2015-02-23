@@ -9,7 +9,7 @@ import Data.Ord
 import Math.Structure.Additive.Monoid
 
 
-class Monoid a => AdditiveGroup a where
+class AdditiveMonoid a => AdditiveGroup a where
   (-) :: a -> a -> a
   negate :: a -> a
 

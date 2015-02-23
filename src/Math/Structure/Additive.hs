@@ -1,7 +1,9 @@
 module Math.Structure.Additive
-  ( (+), sinnum1p
-  , zero, sinnum0p
-  , (-), negate, sinnum
+  ( AdditiveMagma, (+)
+  , AdditiveSemigroup, sinnum1p
+  , AdditiveMonoid, zero, sinnum0p
+  , AdditiveGroup, (-), negate, sinnum
+  , Abelean
   )
 where
 

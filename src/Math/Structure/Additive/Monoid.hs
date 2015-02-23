@@ -10,7 +10,7 @@ import Math.Structure.Additive.Magma
 import Math.Structure.Additive.Semigroup
 
 
-class Semigroup a => Monoid a where
+class AdditiveSemigroup a => AdditiveMonoid a where
   zero :: a
 
   -- todo: optimize

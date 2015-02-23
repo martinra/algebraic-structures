@@ -6,4 +6,4 @@ import qualified Prelude as P
 import Math.Structure.Additive.Magma
 
 
-class Magma a => Abelean a
+class AdditiveMagma a => Abelean a

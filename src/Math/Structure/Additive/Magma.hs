@@ -6,5 +6,5 @@ import qualified Prelude as P
 
 infixl 6 +
 
-class Magma a where
+class AdditiveMagma a where
   (+) :: a -> a -> a
