@@ -1,6 +1,6 @@
 module Math.Structure.Additive.Group where
 
-import Prelude hiding ( (+), (-), negate )
+import Prelude hiding ( (+), (-), negate, subtract )
 
 import Data.Ord
 

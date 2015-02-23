@@ -1,7 +1,7 @@
 module Math.Structure.Additive.Abelean
 where
 
-import Prelude hiding ( (+), (-), negate )
+import Prelude hiding ( (+), (-), negate, subtract )
 
 import Math.Structure.Additive.Magma
 

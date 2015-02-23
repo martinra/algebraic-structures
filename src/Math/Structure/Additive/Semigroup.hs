@@ -1,6 +1,6 @@
 module Math.Structure.Additive.Semigroup where
 
-import Prelude hiding ( (+), (-), negate )
+import Prelude hiding ( (+), (-), negate, subtract )
 
 import Numeric.Natural ( Natural(..) )
 

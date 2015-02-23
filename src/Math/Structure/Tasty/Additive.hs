@@ -6,7 +6,7 @@
 
 module Math.Structure.Tasty.Additive where
 
-import Prelude hiding ( (+), (-), negate )
+import Prelude hiding ( (+), (-), negate, subtract )
 
 import Data.Proxy
 import Numeric.Natural ( Natural(..) )
@@ -81,7 +81,7 @@ isAdditiveGroup' p = testGroup "Additive Group Class" $
   [ testProperty "negate" $
       \a -> (a::a) + (negate a) == (zero::a) && (negate a) + a == (zero::a)
   , testProperty "(-)" $
-      \a b -> (a::a) - a == (zero::a)
+      \a -> (a::a) - a == (zero::a)
   , testProperty "subtract" $
       \a b -> subtract (a::a) (b::a) == b - a
   , testProperty "sinnum" $

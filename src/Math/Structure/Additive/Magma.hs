@@ -1,7 +1,7 @@
 module Math.Structure.Additive.Magma
 where
 
-import Prelude hiding ( (+), (-), negate )
+import Prelude hiding ( (+), (-), negate, subtract )
 
 
 infixl 6 +
