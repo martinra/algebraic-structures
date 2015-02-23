@@ -17,7 +17,7 @@ import Math.Structure.Multiplicative
 import Math.Structure.Multiplicative.Semigroup ( pow1pStd )
 import Math.Structure.Multiplicative.Monoid ( pow0pStd )
 import Math.Structure.Multiplicative.Group ( powStd )
-import Math.Structure.Tasty.Utils
+import Math.Structure.Utils.Tasty
 
 
 isMultiplicativeSemigroup :: ( Testable a, MultiplicativeSemigroup a )

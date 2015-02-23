@@ -3,7 +3,7 @@
   , FlexibleContexts
   #-}
 
-module Math.Structure.Tasty.Utils
+module Math.Structure.Utils.Tasty
 where
 
 import Test.Tasty
