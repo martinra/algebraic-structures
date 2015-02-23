@@ -1,9 +1,7 @@
 module Math.Structure.Additive.Monoid where
 
-import qualified Prelude as P
-import Prelude ( ($) )
+import Prelude hiding ( (+), (-), negate )
 
-import Data.List ( (!!), iterate )
 import Numeric.Natural ( Natural(..) )
 
 import Math.Structure.Additive.Magma
@@ -13,6 +11,9 @@ import Math.Structure.Additive.Semigroup
 class AdditiveSemigroup a => AdditiveMonoid a where
   zero :: a
 
-  -- todo: optimize
   sinnum0p :: Natural -> a -> a
-  sinnum0p n a = (!! P.fromIntegral n) $ iterate (+a) zero
+  sinnum0p = sinnum0pStd
+
+sinnum0pStd :: AdditiveMonoid a
+            => Natural -> a -> a
+sinnum0pStd n a = (!! fromIntegral n) $ iterate (+a) zero

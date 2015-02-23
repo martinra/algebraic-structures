@@ -11,7 +11,10 @@ cabal-version:       >=1.10
 
 library
   exposed-modules:     
+    Test.Natural
+
     Math.Structure.Additive
+    Math.Structure.Tasty
   other-modules:
     Math.Structure.Additive.Abelean
     Math.Structure.Additive.Group
@@ -19,13 +22,17 @@ library
     Math.Structure.Additive.Monoid
     Math.Structure.Additive.Semigroup
 
+    Math.Structure.Tasty.Additive
+    Math.Structure.Tasty.Utils
+
   build-depends:
       base >= 4.8 && < 4.9
-    , vector >= 0.10 && < 0.11
+    , QuickCheck >= 2.7 && < 2.8
     , smallcheck >= 1.1 && < 1.2
     , tasty >= 0.10 && < 0.11
     , tasty-quickcheck >= 0.8 && < 0.9
     , tasty-smallcheck >= 0.8 && < 0.9
+    , vector >= 0.10 && < 0.11
 
   hs-source-dirs:      src
   default-language:    Haskell2010
