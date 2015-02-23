@@ -1,6 +1,6 @@
 module Math.Structure.Multiplicative.Semigroup where
 
-import Prelude hiding ( (*), (/), recip )
+import Prelude hiding ( (*), (/), recip, (^), (^^) )
 
 import Numeric.Natural ( Natural(..) )
 

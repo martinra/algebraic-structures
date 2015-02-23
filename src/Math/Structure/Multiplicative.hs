@@ -1,13 +1,13 @@
 module Math.Structure.Multiplicative
   ( MultiplicativeMagma, (*)
   , MultiplicativeSemigroup, pow1p
-  , MultiplicativeMonoid, zero, pow0p
-  , MultiplicativeGroup, (/), recip, pow
+  , MultiplicativeMonoid, one, pow0p
+  , MultiplicativeGroup, (/), recip, pow, (^), (^^)
   , Commutative
   )
 where
 
-import Prelude hiding ( (*), (/), recip )
+import Prelude hiding ( (*), (/), recip, (^), (^^) )
 
 import Math.Structure.Multiplicative.Commutative
 import Math.Structure.Multiplicative.Group

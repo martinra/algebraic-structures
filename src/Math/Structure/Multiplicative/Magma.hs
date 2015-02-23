@@ -1,7 +1,7 @@
 module Math.Structure.Multiplicative.Magma
 where
 
-import Prelude hiding ( (*), (/), recip )
+import Prelude hiding ( (*), (/), recip, (^), (^^) )
 
 
 infixl 7 *

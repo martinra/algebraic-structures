@@ -1,7 +1,7 @@
 module Math.Structure.Multiplicative.Commutative
 where
 
-import Prelude hiding ( (*), (/), recip )
+import Prelude hiding ( (*), (/), recip, (^), (^^) )
 
 import Math.Structure.Multiplicative.Magma
 

@@ -30,6 +30,7 @@ library
     Math.Structure.Multiplicative.Semigroup
 
     Math.Structure.Tasty.Additive
+    Math.Structure.Tasty.Multiplicative
     Math.Structure.Tasty.Utils
 
   build-depends:

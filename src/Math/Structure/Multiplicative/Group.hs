@@ -1,6 +1,6 @@
 module Math.Structure.Multiplicative.Group where
 
-import Prelude hiding ( (*), (/), recip )
+import Prelude hiding ( (*), (/), recip, (^), (^^) )
 
 import Data.Ord
 
@@ -8,6 +8,7 @@ import Math.Structure.Multiplicative.Monoid
 
 
 infixl 7 /
+infixr 8 ^^
 
 class MultiplicativeMonoid a => MultiplicativeGroup a where
   (/) :: a -> a -> a
@@ -15,6 +16,9 @@ class MultiplicativeMonoid a => MultiplicativeGroup a where
 
   pow :: Integral n => n -> a -> a
   pow = powStd
+
+  (^^) :: Integral n => a -> n -> a
+  (^^) = flip pow
 
 
 powStd :: (Integral n, MultiplicativeGroup a)
