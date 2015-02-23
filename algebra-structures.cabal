@@ -15,6 +15,7 @@ library
 
     Math.Structure.Additive
     Math.Structure.Multiplicative
+    Math.Structure.Ring
     Math.Structure.Tasty
   other-modules:
     Math.Structure.Additive.Abelean
@@ -28,6 +29,17 @@ library
     Math.Structure.Multiplicative.Magma
     Math.Structure.Multiplicative.Monoid
     Math.Structure.Multiplicative.Semigroup
+
+    Math.Structure.Ring.Distributive
+    Math.Structure.Ring.Division
+    Math.Structure.Ring.Factorial
+    Math.Structure.Ring.Field
+    Math.Structure.Ring.Integral
+    Math.Structure.Ring.PID
+    Math.Structure.Ring.Rig
+    Math.Structure.Ring.Ring
+    Math.Structure.Ring.Rng
+    Math.Structure.Ring.Semiring
 
     Math.Structure.Tasty.Additive
     Math.Structure.Tasty.Multiplicative

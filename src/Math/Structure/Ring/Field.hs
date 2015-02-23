@@ -1,4 +1,5 @@
-module Math.Structure.Ring.Integral where
+module Math.Structure.Ring.Field
+where
 
 
 import Prelude hiding ( (+), (-), negate, subtract
@@ -7,7 +8,7 @@ import Prelude hiding ( (+), (-), negate, subtract
 
 import Math.Structure.Additive
 import Math.Structure.Multiplicative
-import Math.Structure.Ring.Ring
+import Math.Structure.Ring.Division
 
 
-class Ring r => IntegralDomain r
+class (DivisionRing r, Commutative r) => Field r

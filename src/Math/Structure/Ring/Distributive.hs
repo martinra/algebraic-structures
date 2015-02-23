@@ -1,4 +1,5 @@
-module Math.Structure.Ring.Integral where
+module Math.Structure.Ring.Distributive
+where
 
 
 import Prelude hiding ( (+), (-), negate, subtract
@@ -7,7 +8,6 @@ import Prelude hiding ( (+), (-), negate, subtract
 
 import Math.Structure.Additive
 import Math.Structure.Multiplicative
-import Math.Structure.Ring.Ring
 
 
-class Ring r => IntegralDomain r
+class (AdditiveMagma r, MultiplicativeMagma r) => Distributive r
