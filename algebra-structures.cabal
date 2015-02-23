@@ -14,6 +14,7 @@ library
     Test.Natural
 
     Math.Structure.Additive
+    Math.Structure.Multiplicative
     Math.Structure.Tasty
   other-modules:
     Math.Structure.Additive.Abelean
@@ -21,6 +22,12 @@ library
     Math.Structure.Additive.Magma
     Math.Structure.Additive.Monoid
     Math.Structure.Additive.Semigroup
+
+    Math.Structure.Multiplicative.Commutative
+    Math.Structure.Multiplicative.Group
+    Math.Structure.Multiplicative.Magma
+    Math.Structure.Multiplicative.Monoid
+    Math.Structure.Multiplicative.Semigroup
 
     Math.Structure.Tasty.Additive
     Math.Structure.Tasty.Utils
