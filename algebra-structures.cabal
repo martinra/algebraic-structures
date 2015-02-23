@@ -41,10 +41,16 @@ library
     Math.Structure.Ring.Rng
     Math.Structure.Ring.Semiring
 
+    Math.Structure.Ring.TH
+    Math.Structure.Additive.StdInstances
+    Math.Structure.Multiplicative.StdInstances
+    Math.Structure.Ring.StdInstances
+
     Math.Structure.Tasty.Additive
     Math.Structure.Tasty.Multiplicative
 
     Math.Structure.Utils.Tasty
+    Math.Structure.Utils.TH
 
   build-depends:
       base >= 4.8 && < 4.9
@@ -53,6 +59,7 @@ library
     , tasty >= 0.10 && < 0.11
     , tasty-quickcheck >= 0.8 && < 0.9
     , tasty-smallcheck >= 0.8 && < 0.9
+    , template-haskell >= 2.10 && < 2.11
     , vector >= 0.10 && < 0.11
 
   hs-source-dirs:      src
