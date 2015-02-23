@@ -7,9 +7,14 @@ import Data.Ord
 import Math.Structure.Additive.Monoid
 
 
+infixl 6 -
+
 class AdditiveMonoid a => AdditiveGroup a where
   (-) :: a -> a -> a
   negate :: a -> a
+
+  subtract :: a -> a -> a
+  subtract = flip (-)
 
   sinnum :: Integral n => n -> a -> a
   sinnum = sinnumStd

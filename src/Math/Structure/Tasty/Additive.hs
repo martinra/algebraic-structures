@@ -81,7 +81,9 @@ isAdditiveGroup' p = testGroup "Additive Group Class" $
   [ testProperty "negate" $
       \a -> (a::a) + (negate a) == (zero::a) && (negate a) + a == (zero::a)
   , testProperty "(-)" $
-      \a b -> (a::a) - (b::a) == (zero::a)
+      \a b -> (a::a) - a == (zero::a)
+  , testProperty "subtract" $
+      \a b -> subtract (a::a) (b::a) == b - a
   , testProperty "sinnum" $
       \n a ->  sinnum (n::Integer) (a::a) == sinnumStd n a
   ]
