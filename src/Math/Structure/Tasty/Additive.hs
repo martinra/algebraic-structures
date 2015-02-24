@@ -11,6 +11,7 @@ import Prelude hiding ( (+), (-), negate, subtract )
 import Data.Proxy
 import Numeric.Natural ( Natural(..) )
 import Test.Tasty
+import Test.Tasty.HUnit
 import Test.Natural
 
 import Math.Structure.Additive
@@ -46,6 +47,15 @@ isAbeleanGroup p = testGroup "Additive Abelean Group" $
             , isAdditiveSemigroup' p
             , isAdditiveGroup' p
             ]
+
+hasDecidableZero :: forall a.
+                    ( Testable a, DecidableZero a )
+                 => Proxy a -> TestTree
+hasDecidableZero p = testGroup "Decidable Zero" $
+  [ testCase "isZero zero" $ isZero (zero::a) @?= True
+  , testProperty "isZero <=> (==zero)" $
+      \a -> ((a::a) == zero) == (isZero a)
+  ]
 
 
 isAbelean' :: forall a .
@@ -87,3 +97,5 @@ isAdditiveGroup' p = testGroup "Additive Group Class" $
   , testProperty "sinnum" $
       \n a ->  sinnum (n::Integer) (a::a) == sinnumStd n a
   ]
+
+
