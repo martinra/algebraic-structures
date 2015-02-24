@@ -32,6 +32,7 @@ library
     Math.Structure.Additive.Semigroup
 
     Math.Structure.Multiplicative.Commutative
+    Math.Structure.Multiplicative.DecidableOne
     Math.Structure.Multiplicative.Group
     Math.Structure.Multiplicative.Magma
     Math.Structure.Multiplicative.Monoid

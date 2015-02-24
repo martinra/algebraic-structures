@@ -11,6 +11,7 @@ import Prelude hiding ( (*), (/), recip, (^), (^^) )
 import Data.Proxy
 import Numeric.Natural ( Natural(..) )
 import Test.Tasty
+import Test.Tasty.HUnit
 import Test.Natural
 
 import Math.Structure.Multiplicative
@@ -46,6 +47,15 @@ isCommutativeGroup p = testGroup "Multiplicative Commutative Group" $
             , isMultiplicativeSemigroup' p
             , isMultiplicativeGroup' p
             ]
+
+hasDecidableOne :: forall a.
+                   ( Testable a, DecidableOne a )
+                => Proxy a -> TestTree
+hasDecidableOne p = testGroup "Decidable One" $
+  [ testCase "isOne one" $ isOne (one::a) @?= True
+  , testProperty "isOne <=> (==one)" $
+      \a -> ((a::a) == one) == (isOne a)
+  ]
 
 
 isCommutative' :: forall a .
