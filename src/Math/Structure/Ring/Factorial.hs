@@ -11,10 +11,10 @@ import Numeric.Natural ( Natural )
 
 import Math.Structure.Additive
 import Math.Structure.Multiplicative
-import Math.Structure.Ring.Ring
+import Math.Structure.Ring.Integral
 
 
 data Factored a b = Factored b (Vector (a,Natural))
 
-class Ring r => FactorialRing r where
+class IntegralDomain r => FactorialRing r where
   factor :: r -> Factored r r

@@ -9,8 +9,10 @@ import Prelude hiding ( (+), (-), negate, subtract
 
 import Math.Structure.Additive
 import Math.Structure.Multiplicative
-import Math.Structure.Ring.Ring
+import Math.Structure.Ring.Integral
 
-class Ring r => PID r where
+-- we do not assume Factorial r,
+-- because this is typical a lot of extra effort to implement
+class IntegralDomain r => PID r where
   gcd :: r -> r -> r
   xgcd :: r -> r -> (r,r,r)

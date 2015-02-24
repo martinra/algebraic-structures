@@ -13,7 +13,6 @@ import Prelude hiding ( (+), (-), negate, subtract
 import Math.Structure.Additive
 import Math.Structure.Multiplicative
 import Math.Structure.Ring.Integral
-import Math.Structure.Ring.Ring
 
 
-class (Ring r, MultiplicativeGroup r) => DivisionRing r
+class (IntegralDomain r, MultiplicativeGroup r) => DivisionRing r
