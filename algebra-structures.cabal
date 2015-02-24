@@ -41,10 +41,12 @@ library
     Math.Structure.Ring.Rng
     Math.Structure.Ring.Semiring
 
-    Math.Structure.Ring.TH
-    Math.Structure.Additive.StdInstances
-    Math.Structure.Multiplicative.StdInstances
-    Math.Structure.Ring.StdInstances
+    Math.Structure.Instances.TH.Additive
+    Math.Structure.Instances.TH.Multiplicative
+    Math.Structure.Instances.TH.Ring
+    Math.Structure.Instances.Standard.Additive
+    Math.Structure.Instances.Standard.Multiplicative
+    Math.Structure.Instances.Standard.Ring
 
     Math.Structure.Tasty.Additive
     Math.Structure.Tasty.Multiplicative

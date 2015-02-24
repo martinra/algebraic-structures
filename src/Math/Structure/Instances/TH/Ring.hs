@@ -2,7 +2,7 @@
     TemplateHaskell
   #-}
 
-module Math.Structure.Ring.TH
+module Math.Structure.Instances.TH.Ring
 where
 
 import Control.Monad ( sequence )
