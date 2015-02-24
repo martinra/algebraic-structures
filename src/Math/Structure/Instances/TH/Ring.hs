@@ -5,7 +5,15 @@
 module Math.Structure.Instances.TH.Ring
 where
 
-import Control.Monad ( sequence )
+import Prelude hiding ( (+), (-), negate, subtract
+                      , (*), (/), recip, (^), (^^)
+                      , gcd, xgcd
+                      , quotRem, quot, rem
+                      )
+import qualified Prelude as P
+
+import Control.Monad ( sequence, liftM, liftM2 )
+import Data.Composition ( (.:) )
 import Language.Haskell.TH
 
 import Math.Structure.Ring
@@ -21,3 +29,31 @@ mkRingInstance r = sequence
   , mkInstance r ''Distributive
   ]
 
+mkFieldInstance :: Name -> DecsQ
+mkFieldInstance r =
+  liftM2 mappend (mkRingInstance r) $
+  sequence
+  [ mkInstance r ''IntegralDomain
+  , mkInstance r ''DivisionRing
+  , mkInstance r ''Field
+  ]
+
+mkEuclideanDomainInstanceFromIntegral :: Name -> DecsQ
+mkEuclideanDomainInstanceFromIntegral r =
+  liftM mconcat $ sequence
+  [ mkRingInstance r
+  , mkEuclideanDomainInstanceFromIntegral' r
+  ]
+
+mkEuclideanDomainInstanceFromIntegral' :: Name -> DecsQ
+mkEuclideanDomainInstanceFromIntegral' r = sequence
+  [ mkInstance r ''IntegralDomain
+  , mkInstanceWith r ''PIDRing
+      [ mkDecl 'gcd [| P.gcd |]
+      , mkDecl 'xgcd [| head .: euclidean |]
+      ]
+  , mkInstanceWith r ''EuclideanDomain
+      [ mkDecl 'quotRem [| P.quotRem |]
+      , mkDecl 'euclDegree [| P.fromIntegral . P.abs |]
+      ]
+  ]

@@ -15,5 +15,5 @@ import Math.Structure.Instances.Standard.Multiplicative
 import Math.Structure.Instances.TH.Ring
 
 
-mkRingInstance ''Integer
-mkRingInstance ''Int
+mkEuclideanDomainInstanceFromIntegral ''Integer
+mkEuclideanDomainInstanceFromIntegral ''Int

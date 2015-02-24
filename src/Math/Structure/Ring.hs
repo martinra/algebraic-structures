@@ -5,12 +5,15 @@ module Math.Structure.Ring
   , Ring, IntegralDomain, DivisionRing, Field
   , FactorialRing, Factored, factor
   , PIDRing, gcd, xgcd
+  , EuclideanDomain, quotRem, quot, rem
+  , euclDegree, euclidean
   )
 where
 
 import Prelude hiding ( (+), (-), negate, subtract
                       , (*), (/), recip, (^), (^^)
-                      , gcd, xgcd
+                      , gcd
+                      , quotRem, quot, rem
                       )
 
 import Math.Structure.Additive
@@ -18,6 +21,7 @@ import Math.Structure.Multiplicative
 
 import Math.Structure.Ring.Distributive
 import Math.Structure.Ring.Division
+import Math.Structure.Ring.Euclidean
 import Math.Structure.Ring.Factorial
 import Math.Structure.Ring.Field
 import Math.Structure.Ring.Integral

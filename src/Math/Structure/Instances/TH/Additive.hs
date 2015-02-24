@@ -23,6 +23,8 @@ mkAbeleanGroupInstanceFromNum n = sequence
   , mkInstance n ''AdditiveSemigroup 
   , mkInstanceWith n ''AdditiveMonoid
       [ mkDecl 'zero [| 0 |] ]
+  , mkInstanceWith n ''DecidableZero
+      [ mkDecl 'isZero [| (==0) |] ]
   , mkInstanceWith n ''AdditiveGroup
       [ mkDecl '(-) [| (P.-) |]
       , mkDecl 'negate [| P.negate |]

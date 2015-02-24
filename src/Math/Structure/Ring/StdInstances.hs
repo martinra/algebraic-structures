@@ -9,4 +9,6 @@ import Math.Structure.Ring.TH
 import Math.Structure.Additive.StdInstances
 import Math.Structure.Multiplicative.StdInstances
 
-mkRingInstance ''Integer
+
+mkPIDRingInstanceFromIntegral ''Integer
+mkPIDRingInstanceFromIntegral ''Int

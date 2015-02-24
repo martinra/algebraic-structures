@@ -11,14 +11,21 @@ cabal-version:       >=1.10
 
 library
   exposed-modules:     
-    Test.Natural
+    Math.Structure
 
     Math.Structure.Additive
     Math.Structure.Multiplicative
     Math.Structure.Ring
+
+    Math.Structure.Instances
+
     Math.Structure.Tasty
+
+    Test.Natural
+
   other-modules:
     Math.Structure.Additive.Abelean
+    Math.Structure.Additive.DecidableZero
     Math.Structure.Additive.Group
     Math.Structure.Additive.Magma
     Math.Structure.Additive.Monoid
@@ -32,6 +39,7 @@ library
 
     Math.Structure.Ring.Distributive
     Math.Structure.Ring.Division
+    Math.Structure.Ring.Euclidean
     Math.Structure.Ring.Factorial
     Math.Structure.Ring.Field
     Math.Structure.Ring.Integral
@@ -56,6 +64,7 @@ library
 
   build-depends:
       base >= 4.8 && < 4.9
+    , composition >= 1.0 && < 1.1
     , QuickCheck >= 2.7 && < 2.8
     , smallcheck >= 1.1 && < 1.2
     , tasty >= 0.10 && < 0.11
