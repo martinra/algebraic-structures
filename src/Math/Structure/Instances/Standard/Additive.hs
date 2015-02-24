@@ -1,5 +1,7 @@
 {-# LANGUAGE
     TemplateHaskell
+  , TypeSynonymInstances
+  , FlexibleInstances
   #-}
 
 module Math.Structure.Instances.Standard.Additive
@@ -13,3 +15,6 @@ import Math.Structure.Instances.TH.Additive
 
 mkAbeleanGroupInstanceFromNum ''Integer
 mkAbeleanGroupInstanceFromNum ''Int
+
+mkAbeleanGroupInstanceFromNum ''Rational
+

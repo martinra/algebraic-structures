@@ -1,5 +1,7 @@
 {-# LANGUAGE
     TemplateHaskell
+  , TypeSynonymInstances
+  , FlexibleInstances
   #-}
 
 module Math.Structure.Instances.Standard.Ring
@@ -17,3 +19,5 @@ import Math.Structure.Instances.TH.Ring
 
 mkEuclideanDomainInstanceFromIntegral ''Integer
 mkEuclideanDomainInstanceFromIntegral ''Int
+
+mkFieldInstance ''Rational
