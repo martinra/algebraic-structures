@@ -22,36 +22,36 @@ import Math.Structure.Utils.Tasty
 
 
 isMultiplicativeSemigroup :: ( Testable a, MultiplicativeSemigroup a )
-                          => Proxy a -> TestTree
-isMultiplicativeSemigroup p = testGroup "Multiplicative Semigroup" $
+                          => Proxy a -> [TestTree]
+isMultiplicativeSemigroup p =
   [ isMultiplicativeSemigroup' p ]
 
 isCommutativeSemigroup :: ( Testable a, Commutative a, MultiplicativeSemigroup a )
-                   => Proxy a -> TestTree
-isCommutativeSemigroup p = testGroup "Multiplicative Commutative Semigroup" $
+                   => Proxy a -> [TestTree]
+isCommutativeSemigroup p =
   [ isCommutative' p
   , isMultiplicativeSemigroup' p
   ]
 
 isMultiplicativeGroup :: ( Testable a, MultiplicativeGroup a )
-           => Proxy a -> TestTree
-isMultiplicativeGroup p = testGroup "Multiplicative Group" $
+           => Proxy a -> [TestTree]
+isMultiplicativeGroup p =
   [ isMultiplicativeSemigroup' p
   , isMultiplicativeGroup' p
   ]
 
 isCommutativeGroup :: ( Testable a, Commutative a, MultiplicativeGroup a )
-               => Proxy a -> TestTree
-isCommutativeGroup p = testGroup "Multiplicative Commutative Group" $
-            [ isCommutative' p
-            , isMultiplicativeSemigroup' p
-            , isMultiplicativeGroup' p
-            ]
+               => Proxy a -> [TestTree]
+isCommutativeGroup p =
+  [ isCommutative' p
+  , isMultiplicativeSemigroup' p
+  , isMultiplicativeGroup' p
+  ]
 
 hasDecidableOne :: forall a.
                    ( Testable a, DecidableOne a )
-                => Proxy a -> TestTree
-hasDecidableOne p = testGroup "Decidable One" $
+                => Proxy a -> [TestTree]
+hasDecidableOne p = (:[]) $ testGroup "Decidable One" $
   [ testCase "isOne one" $ isOne (one::a) @?= True
   , testProperty "isOne <=> (==one)" $
       \a -> ((a::a) == one) == (isOne a)

@@ -22,36 +22,36 @@ import Math.Structure.Utils.Tasty
 
 
 isAdditiveSemigroup :: ( Testable a, AdditiveSemigroup a )
-            => Proxy a -> TestTree
-isAdditiveSemigroup p = testGroup "Additive Semigroup" $
-                [ isAdditiveSemigroup' p ]
+            => Proxy a -> [TestTree]
+isAdditiveSemigroup p =
+  [ isAdditiveSemigroup' p ]
 
 isAbeleanSemigroup :: ( Testable a, Abelean a, AdditiveSemigroup a )
-                   => Proxy a -> TestTree
-isAbeleanSemigroup p = testGroup "Additive Abelean Semigroup" $
-                       [ isAbelean' p
-                       , isAdditiveSemigroup' p
-                       ]
+                   => Proxy a -> [TestTree]
+isAbeleanSemigroup p =
+  [ isAbelean' p
+  , isAdditiveSemigroup' p
+  ]
 
 isAdditiveGroup :: ( Testable a, AdditiveGroup a )
-           => Proxy a -> TestTree
-isAdditiveGroup p = testGroup "Additive Group" $
-            [ isAdditiveSemigroup' p
-            , isAdditiveGroup' p
-            ]
+           => Proxy a -> [TestTree]
+isAdditiveGroup p =
+  [ isAdditiveSemigroup' p
+  , isAdditiveGroup' p
+  ]
 
 isAbeleanGroup :: ( Testable a, Abelean a, AdditiveGroup a )
-               => Proxy a -> TestTree
-isAbeleanGroup p = testGroup "Additive Abelean Group" $
-            [ isAbelean' p
-            , isAdditiveSemigroup' p
-            , isAdditiveGroup' p
-            ]
+               => Proxy a -> [TestTree]
+isAbeleanGroup p =
+  [ isAbelean' p
+  , isAdditiveSemigroup' p
+  , isAdditiveGroup' p
+  ]
 
 hasDecidableZero :: forall a.
                     ( Testable a, DecidableZero a )
-                 => Proxy a -> TestTree
-hasDecidableZero p = testGroup "Decidable Zero" $
+                 => Proxy a -> [TestTree]
+hasDecidableZero p = (:[]) $ testGroup "Decidable Zero" $
   [ testCase "isZero zero" $ isZero (zero::a) @?= True
   , testProperty "isZero <=> (==zero)" $
       \a -> ((a::a) == zero) == (isZero a)

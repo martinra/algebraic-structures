@@ -1,8 +1,8 @@
 module Math.Structure.Additive
   ( AdditiveMagma, (+)
-  , DecidableZero, isZero
   , AdditiveSemigroup, sinnum1p
   , AdditiveMonoid, zero, sinnum0p
+  , DecidableZero, isZero
   , AdditiveGroup, (-), negate, subtract, sinnum
   , Abelean
   )
