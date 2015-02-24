@@ -11,6 +11,6 @@ import Math.Structure.Additive
 import Math.Structure.Multiplicative
 import Math.Structure.Ring.Ring
 
-class Ring r => PIDRing r where
+class Ring r => PID r where
   gcd :: r -> r -> r
   xgcd :: r -> r -> (r,r,r)

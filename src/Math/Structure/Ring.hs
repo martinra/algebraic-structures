@@ -4,7 +4,7 @@ module Math.Structure.Ring
   , Distributive, Semiring, Rng, Rig
   , Ring, IntegralDomain, DivisionRing, Field
   , FactorialRing, Factored, factor
-  , PIDRing, gcd, xgcd
+  , PID, gcd, xgcd
   , EuclideanDomain, quotRem, quot, rem
   , euclDegree, euclidean
   )

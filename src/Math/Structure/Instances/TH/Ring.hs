@@ -48,7 +48,7 @@ mkEuclideanDomainInstanceFromIntegral r =
 mkEuclideanDomainInstanceFromIntegral' :: Name -> DecsQ
 mkEuclideanDomainInstanceFromIntegral' r = sequence
   [ mkInstance r ''IntegralDomain
-  , mkInstanceWith r ''PIDRing
+  , mkInstanceWith r ''PID
       [ mkDecl 'gcd [| P.gcd |]
       , mkDecl 'xgcd [| head .: euclidean |]
       ]
