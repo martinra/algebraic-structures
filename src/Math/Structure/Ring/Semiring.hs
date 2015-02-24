@@ -16,4 +16,4 @@ import Math.Structure.Ring.Distributive
 
 
 class ( AdditiveSemigroup r, MultiplicativeSemigroup r
-      , Distributive r ) => Semiring r
+      , Abelean r, Distributive r ) => Semiring r

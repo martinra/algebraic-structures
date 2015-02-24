@@ -33,10 +33,26 @@ isCommutativeSemigroup p =
   , isMultiplicativeSemigroup' p
   ]
 
+isMultiplicativeMonoid :: ( Testable a, MultiplicativeMonoid a )
+           => Proxy a -> [TestTree]
+isMultiplicativeMonoid p =
+  [ isMultiplicativeSemigroup' p
+  , isMultiplicativeMonoid' p
+  ]
+
+isCommutativeMonoid :: ( Testable a, Commutative a, MultiplicativeMonoid a )
+               => Proxy a -> [TestTree]
+isCommutativeMonoid p =
+  [ isCommutative' p
+  , isMultiplicativeSemigroup' p
+  , isMultiplicativeMonoid' p
+  ]
+
 isMultiplicativeGroup :: ( Testable a, MultiplicativeGroup a )
            => Proxy a -> [TestTree]
 isMultiplicativeGroup p =
   [ isMultiplicativeSemigroup' p
+  , isMultiplicativeMonoid' p
   , isMultiplicativeGroup' p
   ]
 
@@ -45,6 +61,7 @@ isCommutativeGroup :: ( Testable a, Commutative a, MultiplicativeGroup a )
 isCommutativeGroup p =
   [ isCommutative' p
   , isMultiplicativeSemigroup' p
+  , isMultiplicativeMonoid' p
   , isMultiplicativeGroup' p
   ]
 

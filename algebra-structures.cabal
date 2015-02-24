@@ -59,6 +59,11 @@ library
 
     Math.Structure.Tasty.Additive
     Math.Structure.Tasty.Multiplicative
+    Math.Structure.Tasty.Ring
+
+    Math.Structure.Tasty.NonZero
+    Math.Structure.Tasty.NonZero.QuickCheck
+    Math.Structure.Tasty.NonZero.SmallCheck
 
     Math.Structure.Utils.Tasty
     Math.Structure.Utils.TH

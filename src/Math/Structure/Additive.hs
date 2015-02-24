@@ -3,6 +3,7 @@ module Math.Structure.Additive
   , AdditiveSemigroup, sinnum1p
   , AdditiveMonoid, zero, sinnum0p
   , DecidableZero, isZero
+  , NonZero, fromNonZero, nonZero
   , AdditiveGroup, (-), negate, subtract, sinnum
   , Abelean
   )

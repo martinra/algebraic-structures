@@ -10,4 +10,4 @@ import Math.Structure.Multiplicative
 import Math.Structure.Ring.Ring
 
 
-class Ring r => IntegralDomain r
+class (Ring r, Commutative r) => IntegralDomain r
