@@ -6,7 +6,7 @@ module Math.Structure.Ring
   , FactorialRing, Factored, factor
   , PID, gcd, xgcd
   , EuclideanDomain, quotRem, quot, rem
-  , euclDegree, euclidean
+  , euclNorm, euclidean
   )
 where
 

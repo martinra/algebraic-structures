@@ -12,6 +12,7 @@ import Prelude hiding ( (+), (-), negate, subtract
                       , quotRem, quot, rem
                       )
 
+import Data.Maybe
 import Data.Proxy
 import Numeric.Natural ( Natural(..) )
 import Test.Tasty
@@ -26,7 +27,7 @@ import Math.Structure.Tasty.Multiplicative
 import Math.Structure.Tasty.NonZero
 
 
-isEuclideanDomain :: ( Testable a, EuclideanDomain a )
+isEuclideanDomain :: ( Testable a, EuclideanDomain a, DecidableZero a )
                   => Proxy a -> [TestTree]
 isEuclideanDomain p =
   isAbeleanGroup p ++
@@ -74,18 +75,22 @@ isPID' p = testGroup "PID"
   ]
 
 isEuclideanDomain' :: forall a .
-                      ( Testable a, EuclideanDomain a )
+                      ( Testable a, EuclideanDomain a, DecidableZero a )
                    => Proxy a -> TestTree
 
 isEuclideanDomain' p = testGroup "Euclidean Domain"
   [ testProperty "quotRem" $
-      \a b -> let (q,r) = quotRem (a::a) (b::a)
-              in r + q*b == a
+      \a b -> let b' = fromNonZero b :: a
+                  (q,r) = quotRem (a::a) b'
+              in r + q*b' == a
   , testProperty "quot & rem" $
-      \a b -> (quot a b, rem a b) == quotRem (a::a) (b::a)
-  , testProperty "euclDegree" $
-      \a -> (euclDegree (a::a) == 0) == (a==zero)
-  , testProperty "euclDegree for quotRem" $
-      \a b -> let (q,r) = quotRem (a::a) (b::a)
-              in (b==zero) || (euclDegree r < euclDegree b)
+      \a b -> let b' = fromNonZero b :: a
+              in (quot a b', rem a b') == quotRem (a::a) b'
+  , testProperty "euclNorm" $
+      \a -> (isNothing $ euclNorm (a::a)) == (a==zero)
+  , testProperty "euclNorm for quotRem" $
+      \a b -> let  b' = fromNonZero b :: a
+                   (q,r) = quotRem (a::a) b'
+              in maybe True (fromJust (euclNorm b') >)
+                         (euclNorm r)
   ]

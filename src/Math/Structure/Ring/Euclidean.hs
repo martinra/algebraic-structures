@@ -6,7 +6,6 @@ import Prelude hiding ( (+), (-), negate, subtract
                       , (*), (/), recip, (^), (^^)
                       , gcd
                       , quotRem, quot, rem
-                      , euclDegree, euclidean
                       )
 import Numeric.Natural ( Natural )
 
@@ -24,7 +23,7 @@ class PID r => EuclideanDomain r where
   rem :: r -> r -> r
   rem = snd .: quotRem
 
-  euclDegree :: r -> Natural
+  euclNorm :: r -> Maybe Natural
 
 euclidean :: (EuclideanDomain r, DecidableZero r)
           => r -> r -> [(r,r,r)]

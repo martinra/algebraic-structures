@@ -54,6 +54,9 @@ mkEuclideanDomainInstanceFromIntegral' r = sequence
       ]
   , mkInstanceWith r ''EuclideanDomain
       [ mkDecl 'quotRem [| P.quotRem |]
-      , mkDecl 'euclDegree [| P.fromIntegral . P.abs |]
+      , mkDecl 'euclNorm
+          [| \a -> if a==0
+                   then Nothing
+                   else Just $ P.fromIntegral (P.abs a) |]
       ]
   ]
