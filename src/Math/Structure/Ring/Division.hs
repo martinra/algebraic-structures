@@ -1,5 +1,6 @@
 {-# LANGUAGE 
     FlexibleInstances
+  , FlexibleContexts
   #-}
 
 module Math.Structure.Ring.Division
@@ -15,4 +16,4 @@ import Math.Structure.Multiplicative
 import Math.Structure.Ring.Integral
 
 
-class (IntegralDomain r, MultiplicativeGroup r) => DivisionRing r
+class (IntegralDomain r, MultiplicativeGroup (NonZero r)) => DivisionRing r

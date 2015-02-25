@@ -1,3 +1,8 @@
+{-# LANGUAGE
+    StandaloneDeriving
+  , GeneralizedNewtypeDeriving
+  #-}
+
 module Math.Structure.Multiplicative.Monoid where
 
 import Prelude hiding ( (*), (/), recip, (^), (^^) )
@@ -5,6 +10,7 @@ import Prelude hiding ( (*), (/), recip, (^), (^^) )
 import Control.Arrow ( second )
 import Numeric.Natural ( Natural(..) )
 
+import Math.Structure.Additive.DecidableZero
 import Math.Structure.Multiplicative.Magma
 import Math.Structure.Multiplicative.Semigroup
 
@@ -23,3 +29,7 @@ class MultiplicativeSemigroup a => MultiplicativeMonoid a where
 pow0pStd :: MultiplicativeMonoid a
             => Natural -> a -> a
 pow0pStd n a = (!! fromIntegral n) $ iterate (*a) one
+
+
+deriving instance    MultiplicativeMonoid a
+                  => MultiplicativeMonoid (NonZero a)

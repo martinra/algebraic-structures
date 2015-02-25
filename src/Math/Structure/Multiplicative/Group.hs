@@ -1,9 +1,15 @@
+{-# LANGUAGE
+    StandaloneDeriving
+  , GeneralizedNewtypeDeriving
+  #-}
+
 module Math.Structure.Multiplicative.Group where
 
 import Prelude hiding ( (*), (/), recip, (^), (^^) )
 
 import Data.Ord
 
+import Math.Structure.Additive.DecidableZero
 import Math.Structure.Multiplicative.Monoid
 
 
@@ -29,3 +35,7 @@ powStd n a =
        GT -> na
        EQ -> one
        LT -> recip na
+
+
+deriving instance    MultiplicativeGroup a
+                  => MultiplicativeGroup (NonZero a)

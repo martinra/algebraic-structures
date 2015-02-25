@@ -11,7 +11,7 @@ class AdditiveMonoid a => DecidableZero a where
 
 
 newtype NonZero a = NonZero { fromNonZero :: a }
-  deriving (Show, Eq)
+  deriving ( Show, Eq )
 
 nonZero :: DecidableZero a => a -> NonZero a
 nonZero a | isZero a = error "NonZero 0 in Math.Structure.Additive.DecidableZero"
