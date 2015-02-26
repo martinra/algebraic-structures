@@ -13,6 +13,6 @@ import Math.Structure.Ring.Integral
 
 -- we do not assume Factorial r,
 -- because this is typical a lot of extra effort to implement
-class IntegralDomain r => PID r where
+class IntegralDomain r => PIDomain r where
   gcd :: r -> r -> r
   xgcd :: r -> r -> (r,r,r)

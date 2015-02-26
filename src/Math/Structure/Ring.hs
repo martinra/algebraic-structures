@@ -3,8 +3,8 @@ module Math.Structure.Ring
   , module Math.Structure.Multiplicative
   , Distributive, Semiring, Rng, Rig
   , Ring, IntegralDomain, DivisionRing, Field
-  , FactorialRing, Factored, factor
-  , PID, gcd, xgcd
+  , FactorialRing, Factored(..), factor
+  , PIDomain, gcd, xgcd
   , EuclideanDomain, quotRem, quot, rem
   , euclNorm, euclidean
   )
@@ -30,8 +30,3 @@ import Math.Structure.Ring.Rig
 import Math.Structure.Ring.Ring
 import Math.Structure.Ring.Rng
 import Math.Structure.Ring.Semiring
-
-
-
-
-

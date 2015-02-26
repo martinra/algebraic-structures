@@ -18,6 +18,9 @@ library
     Math.Structure.Ring
 
     Math.Structure.Instances
+    Math.Structure.Instances.TH.Additive
+    Math.Structure.Instances.TH.Multiplicative
+    Math.Structure.Instances.TH.Ring
 
     Math.Structure.Tasty
 
@@ -50,9 +53,6 @@ library
     Math.Structure.Ring.Rng
     Math.Structure.Ring.Semiring
 
-    Math.Structure.Instances.TH.Additive
-    Math.Structure.Instances.TH.Multiplicative
-    Math.Structure.Instances.TH.Ring
     Math.Structure.Instances.Standard.Additive
     Math.Structure.Instances.Standard.Multiplicative
     Math.Structure.Instances.Standard.Ring
@@ -67,6 +67,9 @@ library
 
     Math.Structure.Utils.Tasty
     Math.Structure.Utils.TH
+
+    Test.Natural.QuickCheck
+    Test.Natural.SmallCheck
 
   build-depends:
       base >= 4.8 && < 4.9

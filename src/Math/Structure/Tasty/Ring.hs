@@ -34,7 +34,7 @@ isEuclideanDomain p =
   isCommutativeMonoid p ++
   [ isDistributive' p
   , isIntegralDomain' p
-  , isPID' p
+  , isPIDomain' p
   , isEuclideanDomain' p
   ]
 
@@ -62,10 +62,10 @@ isIntegralDomain' :: forall a .
 isIntegralDomain' p = testProperty "IntegralDomain" $
   \a b -> ((a::a)*(b::a)==zero) == (a==zero || b==zero)
         
-isPID' :: forall a .
-          ( Testable a, PID a )
+isPIDomain' :: forall a .
+          ( Testable a, PIDomain a )
        => Proxy a -> TestTree
-isPID' p = testGroup "PID"
+isPIDomain' p = testGroup "PID"
   [ testProperty "fst . xgcd = gcd" $
       \a b -> let (d,_,_) = xgcd (a::a) (b::a)
               in gcd a b == d

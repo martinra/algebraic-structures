@@ -7,7 +7,7 @@ where
 
 import Prelude hiding ( (+), (-), negate, subtract
                       , (*), (/), recip, (^), (^^)
-                      , gcd, xgcd
+                      , gcd
                       , quotRem, quot, rem
                       )
 import qualified Prelude as P
@@ -48,7 +48,7 @@ mkEuclideanDomainInstanceFromIntegral r =
 mkEuclideanDomainInstanceFromIntegral' :: Name -> DecsQ
 mkEuclideanDomainInstanceFromIntegral' r = sequence
   [ mkInstance r ''IntegralDomain
-  , mkInstanceWith r ''PID
+  , mkInstanceWith r ''PIDomain
       [ mkDecl 'gcd [| P.gcd |]
       , mkDecl 'xgcd [| head .: euclidean |]
       ]

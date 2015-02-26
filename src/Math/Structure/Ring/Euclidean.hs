@@ -13,7 +13,7 @@ import Math.Structure.Additive
 import Math.Structure.Multiplicative
 import Math.Structure.Ring.PID
 
-class PID r => EuclideanDomain r where
+class PIDomain r => EuclideanDomain r where
   quotRem :: r -> r -> (r,r)
   quotRem a b = (quot a b, rem a b)
   
