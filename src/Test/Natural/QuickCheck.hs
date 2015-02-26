@@ -8,9 +8,6 @@ import Test.QuickCheck.Gen
 
 
 instance Arbitrary Natural where
-  arbitrary = sized $ \n -> fromInteger <$> choose (0, toInteger n)
+  arbitrary = fmap fromInteger $ arbitrary `suchThat` (>=0)
 
-  shrink x = fmap fromInteger $
-             takeWhile (>0) (0:[ x'-i | i <- tail $ iterate (`quot` 2) x' ])
-    where
-    x' = toInteger x
+  shrink = filter (>=0) . shrinkIntegral
