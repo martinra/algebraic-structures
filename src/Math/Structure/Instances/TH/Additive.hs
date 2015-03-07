@@ -14,13 +14,13 @@ import Math.Structure.Additive
 import Math.Structure.Utils.TH
 
 
--- | Make abelean group instance of n, assuming Num n
-mkAbeleanGroupInstanceFromNum :: Name -> DecsQ
-mkAbeleanGroupInstanceFromNum n = sequence
+-- | Make abelian group instance of n, assuming Num n
+mkAbelianGroupInstanceFromNum :: Name -> DecsQ
+mkAbelianGroupInstanceFromNum n = sequence
   [ mkInstanceWith n ''AdditiveMagma
       [ mkDecl '(+) [| (P.+) |] ]
-  , mkInstance n ''Abelean
-  , mkInstance n ''AdditiveSemigroup 
+  , mkInstance n ''Abelian
+  , mkInstance n ''AdditiveSemigroup
   , mkInstanceWith n ''AdditiveMonoid
       [ mkDecl 'zero [| 0 |] ]
   , mkInstanceWith n ''DecidableZero

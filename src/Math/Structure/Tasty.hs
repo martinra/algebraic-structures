@@ -1,8 +1,8 @@
 module Math.Structure.Tasty
   ( isAdditiveSemigroup
-  , isAbeleanSemigroup
+  , isAbelianSemigroup
   , isAdditiveGroup
-  , isAbeleanGroup
+  , isAbelianGroup
   , hasDecidableZero
 
   , isMultiplicativeSemigroup

@@ -13,8 +13,8 @@ import qualified Prelude as P
 import Math.Structure.Instances.TH.Additive
 
 
-mkAbeleanGroupInstanceFromNum ''Integer
-mkAbeleanGroupInstanceFromNum ''Int
+mkAbelianGroupInstanceFromNum ''Integer
+mkAbelianGroupInstanceFromNum ''Int
 
-mkAbeleanGroupInstanceFromNum ''Rational
+mkAbelianGroupInstanceFromNum ''Rational
 

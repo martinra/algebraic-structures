@@ -26,10 +26,10 @@ isAdditiveSemigroup :: ( Testable a, AdditiveSemigroup a )
 isAdditiveSemigroup p =
   [ isAdditiveSemigroup' p ]
 
-isAbeleanSemigroup :: ( Testable a, Abelean a, AdditiveSemigroup a )
+isAbelianSemigroup :: ( Testable a, Abelian a, AdditiveSemigroup a )
                    => Proxy a -> [TestTree]
-isAbeleanSemigroup p =
-  [ isAbelean' p
+isAbelianSemigroup p =
+  [ isAbelian' p
   , isAdditiveSemigroup' p
   ]
 
@@ -40,10 +40,10 @@ isAdditiveGroup p =
   , isAdditiveGroup' p
   ]
 
-isAbeleanGroup :: ( Testable a, Abelean a, AdditiveGroup a )
+isAbelianGroup :: ( Testable a, Abelian a, AdditiveGroup a )
                => Proxy a -> [TestTree]
-isAbeleanGroup p =
-  [ isAbelean' p
+isAbelianGroup p =
+  [ isAbelian' p
   , isAdditiveSemigroup' p
   , isAdditiveGroup' p
   ]
@@ -58,10 +58,10 @@ hasDecidableZero p = (:[]) $ testGroup "Decidable Zero" $
   ]
 
 
-isAbelean' :: forall a .
-              ( Testable a, Abelean a )
+isAbelian' :: forall a .
+              ( Testable a, Abelian a )
            => Proxy a -> TestTree
-isAbelean' p = testProperty "Additive Abelean Class" $
+isAbelian' p = testProperty "Additive Abelian Class" $
                  \a b -> (a::a) + (b::a) == b + a
 
 isAdditiveSemigroup' :: forall a .

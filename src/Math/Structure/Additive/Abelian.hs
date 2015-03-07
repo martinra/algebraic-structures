@@ -1,4 +1,4 @@
-module Math.Structure.Additive.Abelean
+module Math.Structure.Additive.Abelian
 where
 
 import Prelude hiding ( (+), (-), negate, subtract )
@@ -6,4 +6,4 @@ import Prelude hiding ( (+), (-), negate, subtract )
 import Math.Structure.Additive.Magma
 
 
-class AdditiveMagma a => Abelean a
+class AdditiveMagma a => Abelian a

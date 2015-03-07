@@ -30,7 +30,7 @@ import Math.Structure.Tasty.NonZero
 isEuclideanDomain :: ( Testable a, EuclideanDomain a, DecidableZero a )
                   => Proxy a -> [TestTree]
 isEuclideanDomain p =
-  isAbeleanGroup p ++
+  isAbelianGroup p ++
   isCommutativeMonoid p ++
   [ isDistributive' p
   , isIntegralDomain' p
@@ -42,7 +42,7 @@ isField :: forall a .
            ( Testable a, Field a, DecidableZero a )
         => Proxy a -> [TestTree]
 isField p =
-  isAbeleanGroup p ++
+  isAbelianGroup p ++
   isCommutativeGroup (Proxy::Proxy (NonZero a)) ++
   [ isDistributive' p
   , isIntegralDomain' p
