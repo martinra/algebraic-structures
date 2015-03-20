@@ -40,6 +40,17 @@ isRightModule pr pm =
   isMultiplicativeRightAction pr pm ++
   [ isLinearSemiringRightAction' pr pm ]
 
+isModule ::
+     ( Testable r, Testable m, Module r m )
+  => Proxy r -> Proxy m -> [TestTree]
+isModule pr pm =
+  isAbeleanGroup pm ++
+  isMultiplicativeLeftAction pr pm ++
+  isMultiplicativeRightAction pr pm ++
+  [ isLinearSemiringLeftAction' pr pm
+  , isLinearSemiringRightAction' pr pm
+  , isModule' pr pm
+  ]
 
 isLinearSemiringLeftAction' :: forall r m .
      ( Testable r, Testable m
@@ -58,3 +69,11 @@ isLinearSemiringRightAction' :: forall r m .
 isLinearSemiringRightAction' pr pm =
   testProperty "Linear semiring left action" $
     \r r' m -> (m::m) .* ((r::r) + (r'::r)) == m .* r + m .* r'
+
+isModule' :: forall r m .
+     ( Testable r, Testable m
+     , Module r m )
+  => Proxy r -> Proxy m -> TestTree
+isModule' pr pm = 
+  testProperty "Module" $
+    \r m -> (r::r) *. (m::m) == m .* r
