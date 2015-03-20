@@ -27,6 +27,14 @@ import Math.Structure.Tasty.Multiplicative
 import Math.Structure.Tasty.NonZero
 
 
+isRing ::
+     ( Testable r, Ring r )
+  => Proxy r -> [TestTree]
+isRing p =
+  isAbeleanGroup p ++
+  isMultiplicativeMonoid p ++
+  [ isDistributive' p ]
+
 isEuclideanDomain :: ( Testable a, EuclideanDomain a, DecidableZero a )
                   => Proxy a -> [TestTree]
 isEuclideanDomain p =

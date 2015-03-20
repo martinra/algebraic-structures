@@ -26,5 +26,7 @@ class    ( Commutative r, SemiLeftAlgebra r a, SemiRightAlgebra r a )
 class ( Semiring a, RightModule r a ) => SemiRightAlgebra r a
 class ( Ring a, RightModule r a ) => RightAlgebra r a
 
-class    ( Commutative r, LeftAlgebra r a, RightAlgebra r a )
+class    ( Commutative r
+         , LeftAlgebra r a, RightAlgebra r a
+         , Module r a )
       => Algebra r a
