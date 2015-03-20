@@ -28,21 +28,21 @@ isLeftModule ::
      ( Testable r, Testable m, LeftModule r m )
   => Proxy r -> Proxy m -> [TestTree]
 isLeftModule pr pm =
-  isAbeleanGroup pm ++
+  isAbelianGroup pm ++
   [ isLeftModule' pr pm ]
 
 isRightModule ::
      ( Testable r, Testable m, RightModule r m )
   => Proxy r -> Proxy m -> [TestTree]
 isRightModule pr pm =
-  isAbeleanGroup pm ++
+  isAbelianGroup pm ++
   [ isRightModule' pr pm ]
 
 isModule ::
      ( Testable r, Testable m, Module r m )
   => Proxy r -> Proxy m -> [TestTree]
 isModule pr pm =
-  isAbeleanGroup pm ++
+  isAbelianGroup pm ++
   [ isLeftModule' pr pm
   , isRightModule' pr pm
   , isModule' pr pm

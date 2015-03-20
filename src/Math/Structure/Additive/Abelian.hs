@@ -2,7 +2,7 @@
     ConstraintKinds
   #-}
 
-module Math.Structure.Additive.Abelean
+module Math.Structure.Additive.Abelian
 where
 
 import Prelude hiding ( (+), (-), negate, subtract )
@@ -11,6 +11,6 @@ import Math.Structure.Additive.Magma
 import Math.Structure.Additive.Group
 
 
-class AdditiveMagma a => Abelean a
+class AdditiveMagma a => Abelian a
 
-type AbeleanGroup a = (AdditiveGroup a, Abelean a)
+type AbelianGroup a = (AdditiveGroup a, Abelian a)

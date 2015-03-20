@@ -16,12 +16,12 @@ import Math.Structure.Utils.TH
 
 
 -- | Make abelean monoid instance of n, assuming Num n
-mkAbeleanMonoidInstanceFromNum :: Name -> DecsQ
-mkAbeleanMonoidInstanceFromNum n = sequence
+mkAbelianMonoidInstanceFromNum :: Name -> DecsQ
+mkAbelianMonoidInstanceFromNum n = sequence
   [ mkInstanceWith n ''AdditiveMagma
       [ mkDecl '(+) [| (P.+) |] ]
-  , mkInstance n ''Abelean
-  , mkInstance n ''AdditiveSemigroup 
+  , mkInstance n ''Abelian
+  , mkInstance n ''AdditiveSemigroup
   , mkInstanceWith n ''AdditiveMonoid
       [ mkDecl 'zero [| 0 |] ]
   , mkInstanceWith n ''DecidableZero
@@ -29,9 +29,9 @@ mkAbeleanMonoidInstanceFromNum n = sequence
   ]
 
 -- | Make abelean group instance of n, assuming Num n
-mkAbeleanGroupInstanceFromNum :: Name -> DecsQ
-mkAbeleanGroupInstanceFromNum n = concat <$> sequence 
-  [ mkAbeleanMonoidInstanceFromNum n
+mkAbelianGroupInstanceFromNum :: Name -> DecsQ
+mkAbelianGroupInstanceFromNum n = concat <$> sequence 
+  [ mkAbelianMonoidInstanceFromNum n
   , sequence
     [ mkInstanceWith n ''AdditiveGroup
         [ mkDecl '(-) [| (P.-) |]

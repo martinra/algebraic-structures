@@ -28,7 +28,7 @@ library
     Test.Natural
 
   other-modules:
-    Math.Structure.Additive.Abelean
+    Math.Structure.Additive.Abelian
     Math.Structure.Additive.DecidableZero
     Math.Structure.Additive.Group
     Math.Structure.Additive.Magma

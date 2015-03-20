@@ -15,12 +15,12 @@ import Math.Structure.Module.LinearAction
 import Math.Structure.Ring.Semiring
 
 
-class    ( Semiring r, AbeleanGroup m
+class    ( Semiring r, AbelianGroup m
          , MultiplicativeLeftAction r m
          , LinearSemiringLeftAction r m )
       => LeftModule r m
 
-class    ( Semiring r, AbeleanGroup m
+class    ( Semiring r, AbelianGroup m
          , MultiplicativeRightAction r m
          , LinearSemiringRightAction r m )
       => RightModule r m

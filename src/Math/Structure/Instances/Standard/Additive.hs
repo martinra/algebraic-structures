@@ -14,9 +14,9 @@ import Numeric.Natural ( Natural )
 import Math.Structure.Instances.TH.Additive
 
 
-mkAbeleanGroupInstanceFromNum ''Integer
-mkAbeleanGroupInstanceFromNum ''Int
-mkAbeleanMonoidInstanceFromNum ''Natural
+mkAbelianGroupInstanceFromNum ''Integer
+mkAbelianGroupInstanceFromNum ''Int
+mkAbelianMonoidInstanceFromNum ''Natural
 
-mkAbeleanGroupInstanceFromNum ''Rational
+mkAbelianGroupInstanceFromNum ''Rational
 
