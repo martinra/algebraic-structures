@@ -24,3 +24,7 @@ class    ( Semiring r, AbeleanGroup m
          , MultiplicativeRightAction r m
          , LinearSemiringRightAction r m )
       => RightModule r m
+
+class    ( Commutative r
+         , LeftModule r m, RightModule r m )
+      => Module r m

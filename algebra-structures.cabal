@@ -35,6 +35,7 @@ library
     Math.Structure.Additive.Monoid
     Math.Structure.Additive.Semigroup
 
+    Math.Structure.Module.Algebra
     Math.Structure.Module.LinearAction
     Math.Structure.Module.Module
 
