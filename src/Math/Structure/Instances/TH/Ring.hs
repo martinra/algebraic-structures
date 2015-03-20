@@ -38,12 +38,13 @@ mkRingInstance r = concat <$> sequence
   ]
 
 mkFieldInstance :: Name -> DecsQ
-mkFieldInstance r =
-  liftM2 mappend (mkRingInstance r) $
-  sequence
-  [ mkInstance r ''IntegralDomain
-  , mkInstance r ''DivisionRing
-  , mkInstance r ''Field
+mkFieldInstance r = concat <$> sequence
+  [ mkRingInstance r
+  , sequence
+    [ mkInstance r ''IntegralDomain
+    , mkInstance r ''DivisionRing
+    , mkInstance r ''Field
+    ]
   ]
 
 mkEuclideanDomainInstanceFromIntegral :: Name -> DecsQ

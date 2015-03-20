@@ -8,7 +8,7 @@ where
 import Prelude hiding ( (*), (/), recip, (^), (^^) )
 import qualified Prelude as P
 
-import Control.Monad ( liftM2 )
+import Control.Applicative ( (<$>) )
 import Language.Haskell.TH
 
 import Math.Structure.Multiplicative
@@ -26,16 +26,18 @@ mkCommutativeMonoidInstanceFromNum n = sequence
       [ mkDecl 'one [| 1 |]
       , mkDecl '(^) [| (P.^) |]
       ]
+  , mkInstanceWith n ''DecidableOne
+      [ mkDecl 'isOne [| (==1) |] ]
   ]
 
 mkCommutativeGroupInstanceFromFractional :: Name -> DecsQ
-mkCommutativeGroupInstanceFromFractional n =
-  liftM2 mappend
-  (mkCommutativeMonoidInstanceFromNum n)
-  $ sequence 
-  [ mkInstanceWith n ''MultiplicativeGroup
-      [ mkDecl 'recip [| P.recip |]
-      , mkDecl '(/) [| (P./) |]
-      , mkDecl '(^^) [| (P.^^) |]
-      ] 
+mkCommutativeGroupInstanceFromFractional n = concat <$> sequence
+  [ mkCommutativeMonoidInstanceFromNum n
+  , sequence 
+    [ mkInstanceWith n ''MultiplicativeGroup
+        [ mkDecl 'recip [| P.recip |]
+        , mkDecl '(/) [| (P./) |]
+        , mkDecl '(^^) [| (P.^^) |]
+        ] 
+    ]
   ]
