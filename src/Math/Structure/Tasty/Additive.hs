@@ -40,7 +40,7 @@ isAdditiveGroup p =
   , isAdditiveGroup' p
   ]
 
-isAbeleanGroup :: ( Testable a, Abelean a, AdditiveGroup a )
+isAbeleanGroup :: ( Testable a, AbeleanGroup a )
                => Proxy a -> [TestTree]
 isAbeleanGroup p =
   [ isAbelean' p

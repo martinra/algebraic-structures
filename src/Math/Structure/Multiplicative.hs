@@ -4,12 +4,17 @@ module Math.Structure.Multiplicative
   , MultiplicativeMonoid, one, pow0p
   , DecidableOne, isOne
   , MultiplicativeGroup, (/), recip, pow, (^), (^^)
-  , Commutative
+  , Commutative, CommutativeGroup
+  , MultiplicativeSemigroupLeftAction, (*.)
+  , MultiplicativeLeftAction
+  , MultiplicativeSemigroupRightAction, (.*)
+  , MultiplicativeRightAction
   )
 where
 
 import Prelude hiding ( (*), (/), recip, (^), (^^) )
 
+import Math.Structure.Multiplicative.Action
 import Math.Structure.Multiplicative.Commutative
 import Math.Structure.Multiplicative.DecidableOne
 import Math.Structure.Multiplicative.Group

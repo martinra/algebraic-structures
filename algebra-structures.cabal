@@ -14,6 +14,7 @@ library
     Math.Structure
 
     Math.Structure.Additive
+    Math.Structure.Module
     Math.Structure.Multiplicative
     Math.Structure.Ring
 
@@ -34,6 +35,10 @@ library
     Math.Structure.Additive.Monoid
     Math.Structure.Additive.Semigroup
 
+    Math.Structure.Module.LinearAction
+    Math.Structure.Module.Module
+
+    Math.Structure.Multiplicative.Action
     Math.Structure.Multiplicative.Commutative
     Math.Structure.Multiplicative.DecidableOne
     Math.Structure.Multiplicative.Group
@@ -58,6 +63,7 @@ library
     Math.Structure.Instances.Standard.Ring
 
     Math.Structure.Tasty.Additive
+    Math.Structure.Tasty.Module
     Math.Structure.Tasty.Multiplicative
     Math.Structure.Tasty.Ring
 

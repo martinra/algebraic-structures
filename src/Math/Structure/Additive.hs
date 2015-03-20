@@ -5,7 +5,7 @@ module Math.Structure.Additive
   , DecidableZero, isZero
   , NonZero, fromNonZero, nonZero
   , AdditiveGroup, (-), negate, subtract, sinnum
-  , Abelean
+  , Abelean, AbeleanGroup
   )
 where
 
