@@ -5,6 +5,7 @@
 module Math.Structure.Instances.TH.Additive
 where
 
+import Control.Applicative ( (<$>) )
 import Prelude hiding ( (+), (-), negate, subtract )
 import qualified Prelude as P
 
@@ -14,9 +15,9 @@ import Math.Structure.Additive
 import Math.Structure.Utils.TH
 
 
--- | Make abelean group instance of n, assuming Num n
-mkAbeleanGroupInstanceFromNum :: Name -> DecsQ
-mkAbeleanGroupInstanceFromNum n = sequence
+-- | Make abelean monoid instance of n, assuming Num n
+mkAbeleanMonoidInstanceFromNum :: Name -> DecsQ
+mkAbeleanMonoidInstanceFromNum n = sequence
   [ mkInstanceWith n ''AdditiveMagma
       [ mkDecl '(+) [| (P.+) |] ]
   , mkInstance n ''Abelean
@@ -25,9 +26,17 @@ mkAbeleanGroupInstanceFromNum n = sequence
       [ mkDecl 'zero [| 0 |] ]
   , mkInstanceWith n ''DecidableZero
       [ mkDecl 'isZero [| (==0) |] ]
-  , mkInstanceWith n ''AdditiveGroup
-      [ mkDecl '(-) [| (P.-) |]
-      , mkDecl 'negate [| P.negate |]
-      , mkDecl 'subtract [| P.subtract |]
-      ]
+  ]
+
+-- | Make abelean group instance of n, assuming Num n
+mkAbeleanGroupInstanceFromNum :: Name -> DecsQ
+mkAbeleanGroupInstanceFromNum n = concat <$> sequence 
+  [ mkAbeleanMonoidInstanceFromNum n
+  , sequence
+    [ mkInstanceWith n ''AdditiveGroup
+        [ mkDecl '(-) [| (P.-) |]
+        , mkDecl 'negate [| P.negate |]
+        , mkDecl 'subtract [| P.subtract |]
+        ]
+    ]
   ]

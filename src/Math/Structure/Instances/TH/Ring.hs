@@ -5,6 +5,7 @@
 module Math.Structure.Instances.TH.Ring
 where
 
+import Control.Applicative ( (<$>) )
 import Prelude hiding ( (+), (-), negate, subtract
                       , (*), (/), recip, (^), (^^)
                       , gcd
@@ -20,13 +21,20 @@ import Math.Structure.Ring
 import Math.Structure.Utils.TH
 
 
-mkRingInstance :: Name -> DecsQ
-mkRingInstance r = sequence
-  [ mkInstance r ''Ring
-  , mkInstance r ''Rng
-  , mkInstance r ''Rig
-  , mkInstance r ''Semiring
+mkSemiringInstance :: Name -> DecsQ
+mkSemiringInstance r = sequence
+  [ mkInstance r ''Semiring
   , mkInstance r ''Distributive
+  ]
+
+mkRingInstance :: Name -> DecsQ
+mkRingInstance r = concat <$> sequence
+  [ mkSemiringInstance r
+  , sequence 
+    [ mkInstance r ''Rng
+    , mkInstance r ''Rig
+    , mkInstance r ''Ring
+    ]
   ]
 
 mkFieldInstance :: Name -> DecsQ
