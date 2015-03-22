@@ -10,4 +10,4 @@ import Test.QuickCheck.Gen
 instance Arbitrary Natural where
   arbitrary = fmap fromInteger $ arbitrary `suchThat` (>=0)
 
-  shrink = filter (>=0) . shrinkIntegral
+  shrink = map fromIntegral . filter (>=0) . shrinkIntegral . toInteger
