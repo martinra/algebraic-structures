@@ -22,7 +22,7 @@ class AdditiveMonoid a => AdditiveGroup a where
 sinnumStd :: (Integral n, AdditiveGroup a)
           => n -> a -> a
 sinnumStd n a =
-  let na = sinnum0p (abs $ fromIntegral n) a
+  let na = sinnum0p (fromIntegral $ abs n) a
   in case compare n 0 of
        GT -> na
        EQ -> zero
