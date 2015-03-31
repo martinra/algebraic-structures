@@ -25,8 +25,6 @@ library
 
     Math.Structure.Tasty
 
-    Test.Natural
-
   other-modules:
     Math.Structure.Additive.Abelian
     Math.Structure.Additive.DecidableZero
@@ -75,14 +73,13 @@ library
     Math.Structure.Utils.Tasty
     Math.Structure.Utils.TH
 
-    Test.Natural.QuickCheck
-    Test.Natural.SmallCheck
-
   build-depends:
       base >= 4.8 && < 4.9
     , composition >= 1.0 && < 1.1
+    , mtl >= 2.2 && < 2.3
+    , natural-test
     , QuickCheck >= 2.7 && < 2.8
-    , smallcheck >= 1.1 && < 1.2
+    , smallcheck >= 1.2 && < 1.3
     , tasty >= 0.10 && < 0.11
     , tasty-hunit >= 0.9 && < 0.10
     , tasty-quickcheck >= 0.8 && < 0.9

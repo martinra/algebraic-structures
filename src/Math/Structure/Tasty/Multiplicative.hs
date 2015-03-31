@@ -23,30 +23,30 @@ import Math.Structure.Utils.Tasty
 
 isMultiplicativeSemigroup ::
      ( Testable a, MultiplicativeSemigroup a )
-  => Proxy a -> [TestTree]
-isMultiplicativeSemigroup p =
+  => Proxy a -> TestR [TestTree]
+isMultiplicativeSemigroup p = sequence
   [ isMultiplicativeSemigroup' p ]
 
 isCommutativeSemigroup ::
      ( Testable a, Commutative a, MultiplicativeSemigroup a )
-  => Proxy a -> [TestTree]
-isCommutativeSemigroup p =
+  => Proxy a -> TestR [TestTree]
+isCommutativeSemigroup p = sequence
   [ isCommutative' p
   , isMultiplicativeSemigroup' p
   ]
 
 isMultiplicativeMonoid ::
      ( Testable a, MultiplicativeMonoid a )
-  => Proxy a -> [TestTree]
-isMultiplicativeMonoid p =
+  => Proxy a -> TestR [TestTree]
+isMultiplicativeMonoid p = sequence
   [ isMultiplicativeSemigroup' p
   , isMultiplicativeMonoid' p
   ]
 
 isCommutativeMonoid ::
      ( Testable a, Commutative a, MultiplicativeMonoid a )
-  => Proxy a -> [TestTree]
-isCommutativeMonoid p =
+  => Proxy a -> TestR [TestTree]
+isCommutativeMonoid p = sequence
   [ isCommutative' p
   , isMultiplicativeSemigroup' p
   , isMultiplicativeMonoid' p
@@ -54,8 +54,8 @@ isCommutativeMonoid p =
 
 isMultiplicativeGroup ::
      ( Testable a, MultiplicativeGroup a )
-  => Proxy a -> [TestTree]
-isMultiplicativeGroup p =
+  => Proxy a -> TestR [TestTree]
+isMultiplicativeGroup p = sequence
   [ isMultiplicativeSemigroup' p
   , isMultiplicativeMonoid' p
   , isMultiplicativeGroup' p
@@ -63,8 +63,8 @@ isMultiplicativeGroup p =
 
 isCommutativeGroup ::
     ( Testable a, CommutativeGroup a )
-  => Proxy a -> [TestTree]
-isCommutativeGroup p =
+  => Proxy a -> TestR [TestTree]
+isCommutativeGroup p = sequence
   [ isCommutative' p
   , isMultiplicativeSemigroup' p
   , isMultiplicativeMonoid' p
@@ -73,46 +73,52 @@ isCommutativeGroup p =
 
 hasDecidableOne :: forall a.
      ( Testable a, DecidableOne a )
-  => Proxy a -> [TestTree]
-hasDecidableOne p = (:[]) $ testGroup "Decidable One" $
-  [ testCase "isOne one" $ isOne (one::a) @?= True
-  , testProperty "isOne <=> (==one)" $
-      \a -> ((a::a) == one) == (isOne a)
+  => Proxy a -> TestR [TestTree]
+hasDecidableOne p = withTestProperty $ \testProperty ->
+  [ testGroup "Decidable One"
+    [ testCase "isOne one" $ isOne (one::a) @?= True
+    , testProperty "isOne <=> (==one)" $
+        \a -> ((a::a) == one) == isOne a
+    ]
   ]
 
 isMultiplicativeLeftAction :: forall g s.
      ( Testable g, Testable s, MultiplicativeLeftAction g s )
-  => Proxy g -> Proxy s -> [TestTree]
-isMultiplicativeLeftAction pg ps = (:[]) $
-  testGroup "Multiplicative Left Action" $
-  [ testProperty "Semigroup action" $
-      \g h s -> ((g::g) * (h::g)) *. (s::s) == g *. (h *. s)
-  , testProperty "Monoid action" $
-      \s -> (one::g) *. (s::s) == s
+  => Proxy g -> Proxy s -> TestR [TestTree]
+isMultiplicativeLeftAction pg ps = withTestProperty $ \testProperty ->
+  [ testGroup "Multiplicative Left Action"
+    [ testProperty "Semigroup action" $
+        \g h s -> ((g::g) * (h::g)) *. (s::s) == g *. (h *. s)
+    , testProperty "Monoid action" $
+        \s -> (one::g) *. (s::s) == s
+    ]
   ]
 
 isMultiplicativeRightAction :: forall g s.
      ( Testable g, Testable s, MultiplicativeRightAction g s )
-  => Proxy g -> Proxy s -> [TestTree]
-isMultiplicativeRightAction pg ps = (:[]) $
-  testGroup "Multiplicative Right Action" $
-  [ testProperty "Semigroup action" $
-      \g h s -> (s::s) .* ((g::g) * (h::g)) == (s .* g) .* h
-  , testProperty "Monoid action" $
-      \s -> (s::s) .* (one::g) == s
+  => Proxy g -> Proxy s -> TestR [TestTree]
+isMultiplicativeRightAction pg ps = withTestProperty $ \testProperty ->
+  [ testGroup "Multiplicative Right Action"
+    [ testProperty "Semigroup action" $
+        \g h s -> (s::s) .* ((g::g) * (h::g)) == (s .* g) .* h
+    , testProperty "Monoid action" $
+        \s -> (s::s) .* (one::g) == s
+    ]
   ]
 
 
 isCommutative' :: forall a .
      ( Testable a, Commutative a )
-  => Proxy a -> TestTree
-isCommutative' p = testProperty "Multiplicative Commutative Class" $
+  => Proxy a -> TestR TestTree
+isCommutative' p = withTestProperty $ \testProperty ->
+  testProperty "Multiplicative Commutative Class" $
                  \a b -> (a::a) * (b::a) == b * a
 
 isMultiplicativeSemigroup' :: forall a .
      ( Testable a, MultiplicativeSemigroup a )
-  => Proxy a -> TestTree
-isMultiplicativeSemigroup' p = testGroup "Multiplicative Semigroup Class"
+  => Proxy a -> TestR TestTree
+isMultiplicativeSemigroup' p = withTestProperty $ \testProperty ->
+  testGroup "Multiplicative Semigroup Class"
   [ testProperty "associative" $
       \a b c -> (a::a) * ((b::a) * (c::a)) == (a * b) * c
   , testProperty "pow1p" $
@@ -121,8 +127,9 @@ isMultiplicativeSemigroup' p = testGroup "Multiplicative Semigroup Class"
 
 isMultiplicativeMonoid' :: forall a .
      ( Testable a, MultiplicativeMonoid a )
-  => Proxy a -> TestTree
-isMultiplicativeMonoid' p = testGroup "Multiplicative Monoid"
+  => Proxy a -> TestR TestTree
+isMultiplicativeMonoid' p = withTestProperty $ \testProperty ->
+  testGroup "Multiplicative Monoid"
   [ testProperty "one" $
       \a -> (one::a) * (a::a) == a && a * (one::a) == a
   , testProperty "pow0p" $
@@ -133,8 +140,9 @@ isMultiplicativeMonoid' p = testGroup "Multiplicative Monoid"
 
 isMultiplicativeGroup' :: forall a .
      ( Testable a, MultiplicativeGroup a )
-  => Proxy a -> TestTree
-isMultiplicativeGroup' p = testGroup "Multiplicative Group Class" $
+  => Proxy a -> TestR TestTree
+isMultiplicativeGroup' p = withTestProperty $ \testProperty ->
+  testGroup "Multiplicative Group Class"
   [ testProperty "recip" $
       \a -> (a::a) * (recip a) == (one::a) && (recip a) * a == (one::a)
   , testProperty "(/)" $

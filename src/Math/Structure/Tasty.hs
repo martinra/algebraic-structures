@@ -1,5 +1,7 @@
 module Math.Structure.Tasty
-  ( isAdditiveSemigroup
+  ( runTestR
+
+  , isAdditiveSemigroup
   , isAbelianSemigroup
   , isAdditiveGroup
   , isAbelianGroup
@@ -33,3 +35,5 @@ import Math.Structure.Tasty.Module
 import Math.Structure.Tasty.Multiplicative
 import Math.Structure.Tasty.NonZero
 import Math.Structure.Tasty.Ring
+
+import Math.Structure.Utils.Tasty
