@@ -141,7 +141,7 @@ isLeftAlgebra' :: forall r a .
   => Proxy r -> Proxy a -> TestR TestTree
 isLeftAlgebra' pr pa = withTestProperty $ \testProperty ->
   testProperty "Left algebra" $
-    \r a a' -> (r::r) *. ((a::a) * (a'::a)) == ( r *. a) * a
+    \r a a' -> (r::r) *. ((a::a) * (a'::a)) == ( r *. a) * a'
 
 isRightAlgebra' :: forall r a .
      ( Testable r, Testable a, RightAlgebra r a )
