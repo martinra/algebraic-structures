@@ -1,5 +1,6 @@
 {-# LANGUAGE
     MultiParamTypeClasses
+  , FlexibleInstances
   #-}
 
 module Math.Structure.Module.LinearAction
@@ -21,3 +22,6 @@ class    ( Semiring r, AdditiveSemigroup m, Abelian m
 class    ( Semiring r, AdditiveSemigroup m, Abelian m
          , MultiplicativeSemigroupRightAction r m )
       => LinearSemiringRightAction r m
+
+instance Semiring r => LinearSemiringLeftAction r r
+instance Semiring r => LinearSemiringRightAction r r

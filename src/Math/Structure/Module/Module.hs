@@ -1,5 +1,6 @@
 {-# LANGUAGE
     MultiParamTypeClasses
+  , FlexibleInstances
   #-}
 
 module Math.Structure.Module.Module
@@ -13,6 +14,7 @@ import Math.Structure.Additive
 import Math.Structure.Multiplicative
 import Math.Structure.Module.LinearAction
 import Math.Structure.Ring.Semiring
+import Math.Structure.Ring.Ring
 
 
 class    ( Semiring r, AbelianGroup m
@@ -28,3 +30,7 @@ class    ( Semiring r, AbelianGroup m
 class    ( Commutative r
          , LeftModule r m, RightModule r m )
       => Module r m
+
+instance Ring r => LeftModule r r
+instance Ring r => RightModule r r
+instance ( Commutative r, Ring r ) => Module r r

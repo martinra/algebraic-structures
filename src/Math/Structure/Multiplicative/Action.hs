@@ -1,5 +1,6 @@
 {-# LANGUAGE
     MultiParamTypeClasses
+  , FlexibleInstances
   #-}
 
 module Math.Structure.Multiplicative.Action
@@ -7,6 +8,8 @@ where
 
 import Prelude hiding ( (*) )
 
+
+import Math.Structure.Multiplicative.Magma
 import Math.Structure.Multiplicative.Monoid
 import Math.Structure.Multiplicative.Semigroup
 
@@ -32,3 +35,14 @@ class    ( MultiplicativeMonoid g, MultiplicativeSemigroupLeftAction g s )
 
 class    ( MultiplicativeMonoid g, MultiplicativeSemigroupRightAction g s )
       => MultiplicativeRightAction g s
+
+
+instance    MultiplicativeSemigroup r
+         => MultiplicativeSemigroupLeftAction  r r where
+  (*.) = (*)
+instance MultiplicativeMonoid r => MultiplicativeLeftAction  r r
+
+instance    MultiplicativeSemigroup r
+         => MultiplicativeSemigroupRightAction  r r where
+  (.*) = (*)
+instance MultiplicativeMonoid r => MultiplicativeRightAction  r r
