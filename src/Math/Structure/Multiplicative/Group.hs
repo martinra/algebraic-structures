@@ -35,7 +35,3 @@ powStd n a =
        GT -> na
        EQ -> one
        LT -> recip na
-
-
-deriving instance    MultiplicativeGroup a
-                  => MultiplicativeGroup (NonZero a)
