@@ -1,7 +1,5 @@
 {-# LANGUAGE
-    StandaloneDeriving
-  , GeneralizedNewtypeDeriving
-  , ConstraintKinds
+    ConstraintKinds
   #-}
 
 module Math.Structure.Multiplicative.Commutative
@@ -15,8 +13,5 @@ import Math.Structure.Multiplicative.Magma
 
 
 class MultiplicativeMagma a => Commutative a
-
-deriving instance    Commutative a
-                  => Commutative (NonZero a)
 
 type CommutativeGroup a = ( MultiplicativeGroup a, Commutative a )

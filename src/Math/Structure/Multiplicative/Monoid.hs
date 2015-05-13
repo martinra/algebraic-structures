@@ -1,8 +1,3 @@
-{-# LANGUAGE
-    StandaloneDeriving
-  , GeneralizedNewtypeDeriving
-  #-}
-
 module Math.Structure.Multiplicative.Monoid where
 
 import Prelude hiding ( (*), (/), recip, (^), (^^) )
@@ -29,7 +24,3 @@ class MultiplicativeSemigroup a => MultiplicativeMonoid a where
 pow0pStd :: MultiplicativeMonoid a
             => Natural -> a -> a
 pow0pStd n a = (!! fromIntegral n) $ iterate (*a) one
-
-
-deriving instance    MultiplicativeMonoid a
-                  => MultiplicativeMonoid (NonZero a)

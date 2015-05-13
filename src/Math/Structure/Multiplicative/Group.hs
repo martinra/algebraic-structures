@@ -1,8 +1,3 @@
-{-# LANGUAGE
-    StandaloneDeriving
-  , GeneralizedNewtypeDeriving
-  #-}
-
 module Math.Structure.Multiplicative.Group where
 
 import Prelude hiding ( (*), (/), recip, (^), (^^) )

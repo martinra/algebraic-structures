@@ -1,8 +1,3 @@
-{-# LANGUAGE
-    StandaloneDeriving
-  , GeneralizedNewtypeDeriving
-  #-}
-
 module Math.Structure.Multiplicative.DecidableOne
 where
 
@@ -14,6 +9,3 @@ import Math.Structure.Multiplicative.Monoid
 
 class MultiplicativeMonoid a => DecidableOne a where
   isOne :: a -> Bool
-
-deriving instance    DecidableOne a
-                  => DecidableOne (NonZero a)

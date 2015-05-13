@@ -57,9 +57,7 @@ library
     Math.Structure.Ring.Rng
     Math.Structure.Ring.Semiring
 
-    Math.Structure.Instances.Standard.Additive
-    Math.Structure.Instances.Standard.Multiplicative
-    Math.Structure.Instances.Standard.Ring
+    Math.Structure.Instances.Standard.Num
 
     Math.Structure.Tasty.Additive
     Math.Structure.Tasty.Module
