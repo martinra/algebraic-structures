@@ -14,6 +14,7 @@ import Numeric.Natural ( Natural(..) )
 import Test.Tasty
 import Test.Tasty.HUnit
 import Test.Natural
+import Test.QuickCheck.Arbitrary ()
 
 import Math.Structure.Additive
 import Math.Structure.Additive.Semigroup ( sinnum1pStd )

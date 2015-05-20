@@ -18,6 +18,7 @@ import Numeric.Natural ( Natural(..) )
 import Test.Tasty
 import Test.Tasty.HUnit
 import Test.Natural
+import Test.QuickCheck.Arbitrary ()
 
 import Math.Structure.Ring
 import Math.Structure.Utils.Tasty
