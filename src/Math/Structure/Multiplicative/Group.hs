@@ -5,6 +5,7 @@ import Prelude hiding ( (*), (/), recip, (^), (^^) )
 import Data.Ord
 
 import Math.Structure.Additive.DecidableZero
+import Math.Structure.Multiplicative.Magma
 import Math.Structure.Multiplicative.Monoid
 
 
@@ -13,7 +14,10 @@ infixr 8 ^^
 
 class MultiplicativeMonoid a => MultiplicativeGroup a where
   (/) :: a -> a -> a
+  a / b = a * recip b
+
   recip :: a -> a
+  recip a = one / a
 
   pow :: Integral n => n -> a -> a
   pow = powStd

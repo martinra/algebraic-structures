@@ -4,6 +4,7 @@ import Prelude hiding ( (+), (-), negate, subtract )
 
 import Data.Ord
 
+import Math.Structure.Additive.Magma
 import Math.Structure.Additive.Monoid
 
 
@@ -11,7 +12,10 @@ infixl 6 -
 
 class AdditiveMonoid a => AdditiveGroup a where
   (-) :: a -> a -> a
+  a - b = a + negate b
+
   negate :: a -> a
+  negate a = zero - a
 
   subtract :: a -> a -> a
   subtract = flip (-)
