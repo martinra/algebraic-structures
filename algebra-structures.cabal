@@ -58,6 +58,7 @@ library
     Math.Structure.Ring.Semiring
 
     Math.Structure.Instances.Standard.Num
+    Math.Structure.Instances.Standard.Vector
 
     Math.Structure.Tasty.Additive
     Math.Structure.Tasty.Module
