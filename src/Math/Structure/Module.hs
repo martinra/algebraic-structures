@@ -10,6 +10,10 @@ module Math.Structure.Module
   , SemiRightAlgebra
   , SemiAlgebra
 
+  , NonUnitalLeftAlgebra
+  , NonUnitalRightAlgebra
+  , NonUnitalAlgebra
+
   , LeftAlgebra
   , RightAlgebra
   , Algebra
