@@ -76,11 +76,11 @@ isRightAlgebra pr pa = fmap concat $ sequence
     ]
   ]
 
-isAlgebra ::
+isNonUnitalAlgebra ::
      ( Testable r, Testable a, Algebra r a )
   => Proxy r -> Proxy a -> TestR [TestTree]
-isAlgebra pr pa = fmap concat $ sequence
-  [ isRing pa
+isNonUnitalAlgebra pr pa = fmap concat $ sequence
+  [ isRng pa
   , sequence
     [ isLeftModule' pr pa
     , isRightModule' pr pa
@@ -88,6 +88,15 @@ isAlgebra pr pa = fmap concat $ sequence
     , isLeftAlgebra' pr pa
     , isRightAlgebra' pr pa
     ]
+  ]
+
+isAlgebra ::
+     ( Testable r, Testable a, Algebra r a )
+  => Proxy r -> Proxy a -> TestR [TestTree]
+isAlgebra pr pa = fmap concat $ sequence
+  [ isNonUnitalAlgebra pr pa
+  , sequence
+    [ isMultiplicativeMonoid' pa ]
   ]
 
 

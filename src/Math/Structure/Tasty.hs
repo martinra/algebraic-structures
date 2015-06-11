@@ -12,6 +12,7 @@ module Math.Structure.Tasty
   , isModule
   , isLeftAlgebra
   , isRightAlgebra
+  , isNonUnitalAlgebra
   , isAlgebra
 
   , isMultiplicativeSemigroup
@@ -24,6 +25,7 @@ module Math.Structure.Tasty
   , isMultiplicativeLeftAction
   , isMultiplicativeRightAction
 
+  , isRng
   , isRing
   , isEuclideanDomain
   , isField

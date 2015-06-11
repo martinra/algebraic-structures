@@ -28,6 +28,15 @@ import Math.Structure.Tasty.Multiplicative
 import Math.Structure.Tasty.NonZero
 
 
+isRng ::
+     ( Testable r, Ring r )
+  => Proxy r -> TestR [TestTree]
+isRng p = fmap concat $ sequence
+  [ isAbelianGroup p
+  , isMultiplicativeSemigroup p
+  , sequence [ isDistributive' p ]
+  ]
+
 isRing ::
      ( Testable r, Ring r )
   => Proxy r -> TestR [TestTree]
