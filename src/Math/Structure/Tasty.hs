@@ -25,6 +25,7 @@ module Math.Structure.Tasty
   , isMultiplicativeLeftAction
   , isMultiplicativeRightAction
 
+  , isSemiring
   , isRng
   , isRing
   , isEuclideanDomain

@@ -77,16 +77,16 @@ isRightAlgebra pr pa = fmap concat $ sequence
   ]
 
 isNonUnitalAlgebra ::
-     ( Testable r, Testable a, Algebra r a )
+     ( Testable r, Testable a, NonUnitalAlgebra r a )
   => Proxy r -> Proxy a -> TestR [TestTree]
 isNonUnitalAlgebra pr pa = fmap concat $ sequence
   [ isRng pa
   , sequence
-    [ isLeftModule' pr pa
-    , isRightModule' pr pa
-    , isModule' pr pa
-    , isLeftAlgebra' pr pa
-    , isRightAlgebra' pr pa
+    [ isNonUnitalLeftModule' pr pa
+    , isNonUnitalRightModule' pr pa
+    , isNonUnitalModule' pr pa
+    , isNonUnitalLeftAlgebra' pr pa
+    , isNonUnitalRightAlgebra' pr pa
     ]
   ]
 
@@ -94,9 +94,14 @@ isAlgebra ::
      ( Testable r, Testable a, Algebra r a )
   => Proxy r -> Proxy a -> TestR [TestTree]
 isAlgebra pr pa = fmap concat $ sequence
-  [ isNonUnitalAlgebra pr pa
+  [ isRing pa
   , sequence
-    [ isMultiplicativeMonoid' pa ]
+    [ isLeftModule' pr pa
+    , isRightModule' pr pa
+    , isModule' pr pa
+    , isLeftAlgebra' pr pa
+    , isRightAlgebra' pr pa
+    ]
   ]
 
 
@@ -158,3 +163,48 @@ isRightAlgebra' :: forall r a .
 isRightAlgebra' pr pa = withTestProperty $ \testProperty ->
   testProperty "Right algebra" $
     \r a a' -> ((a::a) * (a'::a)) .* (r::r) == a * (a' .* r)
+
+
+isNonUnitalLeftAlgebra' :: forall r a .
+     ( Testable r, Testable a, NonUnitalLeftAlgebra r a )
+  => Proxy r -> Proxy a -> TestR TestTree
+isNonUnitalLeftAlgebra' pr pa = withTestProperty $ \testProperty ->
+  testProperty "Left algebra" $
+    \r a a' -> (r::r) *. ((a::a) * (a'::a)) == ( r *. a) * a'
+
+isNonUnitalRightAlgebra' :: forall r a .
+     ( Testable r, Testable a, NonUnitalRightAlgebra r a )
+  => Proxy r -> Proxy a -> TestR TestTree
+isNonUnitalRightAlgebra' pr pa = withTestProperty $ \testProperty ->
+  testProperty "Right algebra" $
+    \r a a' -> ((a::a) * (a'::a)) .* (r::r) == a * (a' .* r)
+
+
+isNonUnitalLeftModule' ::
+     ( Testable r, Testable m, NonUnitalLeftModule r m )
+  => Proxy r -> Proxy m -> TestR TestTree
+isNonUnitalLeftModule' pr pm = 
+  fmap (testGroup "Non-unital left module") $
+  fmap concat $ sequence
+  [ isMultiplicativeSemigroupLeftAction pr pm
+  , sequence
+    [ isLinearSemiringLeftAction' pr pm ]
+  ]
+
+isNonUnitalRightModule' ::
+     ( Testable r, Testable m, NonUnitalRightModule r m )
+  => Proxy r -> Proxy m -> TestR TestTree
+isNonUnitalRightModule' pr pm = 
+  fmap (testGroup "Non-unital right module") $
+  fmap concat $ sequence
+  [ isMultiplicativeSemigroupRightAction pr pm
+  , sequence
+    [ isLinearSemiringRightAction' pr pm ]
+  ]
+
+isNonUnitalModule' :: forall r m .
+     ( Testable r, Testable m, NonUnitalModule r m )
+  => Proxy r -> Proxy m -> TestR TestTree
+isNonUnitalModule' pr pm = withTestProperty $ \testProperty ->
+  testProperty "NonUnitalModule" $
+    \r m -> (r::r) *. (m::m) == m .* r

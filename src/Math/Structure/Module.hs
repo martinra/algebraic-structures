@@ -6,17 +6,21 @@ module Math.Structure.Module
   , RightModule
   , Module
 
+  , NonUnitalLeftModule
+  , NonUnitalRightModule
+  , NonUnitalModule
+
   , SemiLeftAlgebra
   , SemiRightAlgebra
   , SemiAlgebra
 
-  , NonUnitalLeftAlgebra
-  , NonUnitalRightAlgebra
-  , NonUnitalAlgebra
-
   , LeftAlgebra
   , RightAlgebra
   , Algebra
+
+  , NonUnitalLeftAlgebra
+  , NonUnitalRightAlgebra
+  , NonUnitalAlgebra
   )
 where
 

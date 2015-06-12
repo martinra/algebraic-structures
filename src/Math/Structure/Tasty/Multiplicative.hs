@@ -83,6 +83,18 @@ hasDecidableOne p = withTestProperty $ \testProperty ->
     ]
   ]
 
+
+isMultiplicativeSemigroupLeftAction :: forall g s.
+     ( Testable g, Testable s, MultiplicativeSemigroupLeftAction g s )
+  => Proxy g -> Proxy s -> TestR [TestTree]
+isMultiplicativeSemigroupLeftAction pg ps =
+  withTestProperty $ \testProperty ->
+  [ testGroup "Multiplicative Semigroup Left Action"
+    [ testProperty "Semigroup action" $
+        \g h s -> ((g::g) * (h::g)) *. (s::s) == g *. (h *. s)
+    ]
+  ]
+
 isMultiplicativeLeftAction :: forall g s.
      ( Testable g, Testable s, MultiplicativeLeftAction g s )
   => Proxy g -> Proxy s -> TestR [TestTree]
@@ -92,6 +104,17 @@ isMultiplicativeLeftAction pg ps = withTestProperty $ \testProperty ->
         \g h s -> ((g::g) * (h::g)) *. (s::s) == g *. (h *. s)
     , testProperty "Monoid action" $
         \s -> (one::g) *. (s::s) == s
+    ]
+  ]
+
+isMultiplicativeSemigroupRightAction :: forall g s.
+     ( Testable g, Testable s, MultiplicativeSemigroupRightAction g s )
+  => Proxy g -> Proxy s -> TestR [TestTree]
+isMultiplicativeSemigroupRightAction pg ps =
+  withTestProperty $ \testProperty ->
+  [ testGroup "Multiplicative Semigroup Right Action"
+    [ testProperty "Semigroup action" $
+        \g h s -> (s::s) .* ((g::g) * (h::g)) == (s .* g) .* h
     ]
   ]
 
