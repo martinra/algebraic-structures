@@ -29,7 +29,7 @@ class MultiplicativeMonoid a => MultiplicativeGroup a where
 powStd :: (Integral n, MultiplicativeGroup a)
           => n -> a -> a
 powStd n a =
-  let na = pow0p (abs $ fromIntegral n) a
+  let na = pow0p (fromIntegral $ abs n) a
   in case compare n 0 of
        GT -> na
        EQ -> one
