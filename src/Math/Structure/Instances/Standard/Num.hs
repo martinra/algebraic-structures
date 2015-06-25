@@ -23,20 +23,20 @@ import Math.Structure.Instances.TH.Ring
 import Math.Structure.Utils.TH
 
 
-mkAbelianGroupInstanceFromNum ''Integer
-mkCommutativeMonoidInstanceFromNum ''Integer
-mkCommutativeMonoidInstanceFromNonZeroNum ''Integer
-mkEuclideanDomainInstanceFromIntegral ''Integer
+mkAbelianGroupInstanceFromNum (return []) [t|Integer|]
+mkCommutativeMonoidInstanceFromNum (return []) [t|Integer|]
+mkCommutativeMonoidInstanceFromNonZeroNum (return []) [t|Integer|]
+mkEuclideanDomainInstanceFromIntegral (return []) [t|Integer|]
 
-mkAbelianGroupInstanceFromNum ''Int
-mkCommutativeMonoidInstanceFromNum ''Int
-mkCommutativeMonoidInstanceFromNonZeroNum ''Int
-mkEuclideanDomainInstanceFromIntegral ''Int
+mkAbelianGroupInstanceFromNum (return []) [t|Int|]
+mkCommutativeMonoidInstanceFromNum (return []) [t|Int|]
+mkCommutativeMonoidInstanceFromNonZeroNum (return []) [t|Int|]
+mkEuclideanDomainInstanceFromIntegral (return []) [t|Int|]
 
-mkAbelianMonoidInstanceFromNum ''Natural
-mkCommutativeMonoidInstanceFromNum ''Natural
-mkSemiringInstance ''Natural
+mkAbelianMonoidInstanceFromNum (return []) [t|Natural|]
+mkCommutativeMonoidInstanceFromNum (return []) [t|Natural|]
+mkSemiringInstance (return []) [t|Natural|]
 
-mkAbelianGroupInstanceFromNum ''Rational
-mkCommutativeGroupInstanceFromNonZeroFractional ''Rational
-mkFieldInstance ''Rational
+mkAbelianGroupInstanceFromNum (return []) [t|Rational|]
+mkCommutativeGroupInstanceFromNonZeroFractional (return []) [t|Rational|]
+mkFieldInstance (return []) [t|Rational|]

@@ -19,34 +19,34 @@ import Math.Structure.Utils.TH
 
 
 -- | Make commutative group instance of n, assuming Num n and zero != one
-mkCommutativeMonoidInstanceFromNum :: Name -> DecsQ
-mkCommutativeMonoidInstanceFromNum n = sequence
-  [ mkInstanceWith' n ''MultiplicativeMagma
+mkCommutativeMonoidInstanceFromNum :: CxtQ -> TypeQ -> DecsQ
+mkCommutativeMonoidInstanceFromNum cxt t = sequence
+  [ mkInstanceWith cxt t [t|MultiplicativeMagma|]
       [ mkDecl '(*) [| (P.*) |] ]
-  , mkInstance' n ''Commutative
-  , mkInstance' n ''MultiplicativeSemigroup 
-  , mkInstanceWith' n ''MultiplicativeMonoid
+  , mkInstance cxt t [t|Commutative|]
+  , mkInstance cxt t [t|MultiplicativeSemigroup|]
+  , mkInstanceWith cxt t [t|MultiplicativeMonoid|]
       [ mkDecl 'one [| 1 |]
       , mkDecl '(^) [| (P.^) |]
       ]
-  , mkInstanceWith' n ''DecidableOne
+  , mkInstanceWith cxt t [t|DecidableOne|]
       [ mkDecl 'isOne [| (==1) |] ]
   ]
 
-mkCommutativeMonoidInstanceFromNonZeroNum :: Name -> DecsQ
-mkCommutativeMonoidInstanceFromNonZeroNum n = sequence
-  [ deriveInstance nonzeroR (conT ''DecidableOne)
-  , deriveInstance nonzeroR (conT ''MultiplicativeMonoid)
+mkCommutativeMonoidInstanceFromNonZeroNum :: CxtQ -> TypeQ -> DecsQ
+mkCommutativeMonoidInstanceFromNonZeroNum cxt t = sequence
+  [ deriveInstance cxt nonzeroR (conT ''DecidableOne)
+  , deriveInstance cxt nonzeroR (conT ''MultiplicativeMonoid)
   ]
   where
-  nonzeroR = appT (conT ''NonZero) (conT n)
+  nonzeroR = appT (conT ''NonZero) t
 
-mkCommutativeGroupInstanceFromNonZeroFractional :: Name -> DecsQ
-mkCommutativeGroupInstanceFromNonZeroFractional n = concat <$> sequence
-  [ mkCommutativeMonoidInstanceFromNum n
-  , mkCommutativeMonoidInstanceFromNonZeroNum n
+mkCommutativeGroupInstanceFromNonZeroFractional :: CxtQ -> TypeQ -> DecsQ
+mkCommutativeGroupInstanceFromNonZeroFractional cxt t = concat <$> sequence
+  [ mkCommutativeMonoidInstanceFromNum cxt t
+  , mkCommutativeMonoidInstanceFromNonZeroNum cxt t
   , sequence 
-    [ mkInstanceWith nonzeroR (conT ''MultiplicativeGroup)
+    [ mkInstanceWith cxt nonzeroR (conT ''MultiplicativeGroup)
         [ mkDecl 'recip [| \(NonZero a) -> NonZero $ P.recip a |]
         , mkDecl '(/) [| \(NonZero a) (NonZero b) -> NonZero $ a P./ b |]
         , mkDecl '(^^) [| \(NonZero a) n ->  NonZero $ a P.^^ n |]
@@ -54,4 +54,4 @@ mkCommutativeGroupInstanceFromNonZeroFractional n = concat <$> sequence
     ]
   ]
   where
-  nonzeroR = appT (conT ''NonZero) (conT n)
+  nonzeroR = appT (conT ''NonZero) t

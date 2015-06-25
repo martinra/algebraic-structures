@@ -22,51 +22,47 @@ import Math.Structure.Ring
 import Math.Structure.Utils.TH
 
 
-mkSemiringInstance :: Name -> DecsQ
-mkSemiringInstance r = sequence
-  [ mkInstance' r ''Semiring
-  , mkInstance' r ''Distributive
+mkSemiringInstance :: CxtQ -> TypeQ -> DecsQ
+mkSemiringInstance cxt r = sequence
+  [ mkInstance cxt r [t|Semiring|]
+  , mkInstance cxt r [t|Distributive|]
   ]
 
-mkRingInstance :: Name -> DecsQ
-mkRingInstance r = concat <$> sequence
-  [ mkSemiringInstance r
+mkRingInstance :: CxtQ -> TypeQ -> DecsQ
+mkRingInstance cxt r = concat <$> sequence
+  [ mkSemiringInstance cxt r
   , sequence 
-    [ mkInstance' r ''Rng
-    , mkInstance' r ''Rig
-    , mkInstance' r ''Ring
+    [ mkInstance cxt r [t|Rng|]
+    , mkInstance cxt r [t|Rig|]
+    , mkInstance cxt r [t|Ring|]
     ]
   ]
-  where
-  nonzeroR = appT (conT ''NonZero) (conT r)
 
-mkFieldInstance :: Name -> DecsQ
-mkFieldInstance r = concat <$> sequence
-  [ mkRingInstance r
+mkFieldInstance :: CxtQ -> TypeQ -> DecsQ
+mkFieldInstance cxt r = concat <$> sequence
+  [ mkRingInstance cxt r
   , sequence
-    [ mkInstance' r ''IntegralDomain
-    , mkInstance' r ''DivisionRing
-    , mkInstance' r ''Field
+    [ mkInstance cxt r [t|IntegralDomain|]
+    , mkInstance cxt r [t|DivisionRing|]
+    , mkInstance cxt r [t|Field|]
     ]
   ]
-  where
-  nonzeroR = appT (conT ''NonZero) (conT r)
 
-mkEuclideanDomainInstanceFromIntegral :: Name -> DecsQ
-mkEuclideanDomainInstanceFromIntegral r =
+mkEuclideanDomainInstanceFromIntegral :: CxtQ -> TypeQ -> DecsQ
+mkEuclideanDomainInstanceFromIntegral cxt r =
   liftM mconcat $ sequence
-  [ mkRingInstance r
-  , mkEuclideanDomainInstanceFromIntegral' r
+  [ mkRingInstance cxt r
+  , mkEuclideanDomainInstanceFromIntegral' cxt r
   ]
 
-mkEuclideanDomainInstanceFromIntegral' :: Name -> DecsQ
-mkEuclideanDomainInstanceFromIntegral' r = sequence
-  [ mkInstance' r ''IntegralDomain
-  , mkInstanceWith' r ''PIDomain
+mkEuclideanDomainInstanceFromIntegral' :: CxtQ -> TypeQ -> DecsQ
+mkEuclideanDomainInstanceFromIntegral' cxt r = sequence
+  [ mkInstance cxt r [t|IntegralDomain|]
+  , mkInstanceWith cxt r [t|PIDomain|]
       [ mkDecl 'gcd [| P.gcd |]
       , mkDecl 'xgcd [| head .: euclidean |]
       ]
-  , mkInstanceWith' r ''EuclideanDomain
+  , mkInstanceWith cxt r [t|EuclideanDomain|]
       [ mkDecl 'quotRem [| P.quotRem |]
       , mkDecl 'euclNorm
           [| \a -> if a==0

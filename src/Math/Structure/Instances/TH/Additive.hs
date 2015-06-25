@@ -16,24 +16,24 @@ import Math.Structure.Utils.TH
 
 
 -- | Make abelean monoid instance of n, assuming Num n
-mkAbelianMonoidInstanceFromNum :: Name -> DecsQ
-mkAbelianMonoidInstanceFromNum n = sequence
-  [ mkInstanceWith' n ''AdditiveMagma
+mkAbelianMonoidInstanceFromNum :: CxtQ -> TypeQ -> DecsQ
+mkAbelianMonoidInstanceFromNum cxt t = sequence
+  [ mkInstanceWith cxt t [t|AdditiveMagma|]
       [ mkDecl '(+) [| (P.+) |] ]
-  , mkInstance' n ''Abelian
-  , mkInstance' n ''AdditiveSemigroup
-  , mkInstanceWith' n ''AdditiveMonoid
+  , mkInstance cxt t [t|Abelian|]
+  , mkInstance cxt t [t|AdditiveSemigroup|]
+  , mkInstanceWith cxt t [t|AdditiveMonoid|]
       [ mkDecl 'zero [| 0 |] ]
-  , mkInstanceWith' n ''DecidableZero
+  , mkInstanceWith cxt t [t|DecidableZero|]
       [ mkDecl 'isZero [| (==0) |] ]
   ]
 
 -- | Make abelean group instance of n, assuming Num n
-mkAbelianGroupInstanceFromNum :: Name -> DecsQ
-mkAbelianGroupInstanceFromNum n = concat <$> sequence 
-  [ mkAbelianMonoidInstanceFromNum n
+mkAbelianGroupInstanceFromNum :: CxtQ -> TypeQ -> DecsQ
+mkAbelianGroupInstanceFromNum cxt t = concat <$> sequence 
+  [ mkAbelianMonoidInstanceFromNum cxt t
   , sequence
-    [ mkInstanceWith' n ''AdditiveGroup
+    [ mkInstanceWith cxt t [t|AdditiveGroup|]
         [ mkDecl '(-) [| (P.-) |]
         , mkDecl 'negate [| P.negate |]
         , mkDecl 'subtract [| P.subtract |]
