@@ -13,6 +13,7 @@ import Prelude hiding ( (*), (/), recip, (^), (^^) )
 import qualified Prelude as P
 import Language.Haskell.TH
 import Numeric.Natural ( Natural )
+import Foreign.C.Types ( CULong )
 
 import Math.Structure.Additive
 import Math.Structure.Additive.DecidableZero
@@ -41,3 +42,9 @@ mkSemiringInstance (return []) [t|Natural|]
 mkAbelianGroupInstanceFromNum (return []) [t|Rational|]
 mkCommutativeGroupInstanceFromNonZeroFractional (return []) [t|Rational|]
 mkFieldInstance (return []) [t|Rational|]
+
+
+mkAbelianGroupInstanceFromNum (return []) [t|CULong|]
+mkCommutativeMonoidInstanceFromNum (return []) [t|CULong|]
+mkCommutativeMonoidInstanceFromNonZeroNum (return []) [t|CULong|]
+mkRingInstance (return []) [t|CULong|]
