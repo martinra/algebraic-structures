@@ -16,9 +16,9 @@ import Test.Natural
 import Test.QuickCheck.Arbitrary ()
 
 import Math.Structure.Multiplicative
-import Math.Structure.Multiplicative.Semigroup ( pow1pStd )
-import Math.Structure.Multiplicative.Monoid ( pow0pStd )
-import Math.Structure.Multiplicative.Group ( powStd )
+-- import Math.Structure.Multiplicative.Semigroup ( pow1pStd )
+-- import Math.Structure.Multiplicative.Monoid ( pow0pStd )
+-- import Math.Structure.Multiplicative.Group ( powStd )
 import Math.Structure.Utils.Tasty
 
 
@@ -145,8 +145,8 @@ isMultiplicativeSemigroup' p = withTestProperty $ \testProperty ->
   testGroup "Multiplicative Semigroup Class"
   [ testProperty "associative" $
       \a b c -> (a::a) * ((b::a) * (c::a)) == (a * b) * c
-  , testProperty "pow1p" $
-      \n a ->  pow1p n (a::a) == pow1pStd n a
+--  , testProperty "pow1p" $
+--      \n a ->  pow1p n (a::a) == pow1pStd n a
   ]
 
 isMultiplicativeMonoid' :: forall a .
@@ -156,10 +156,10 @@ isMultiplicativeMonoid' p = withTestProperty $ \testProperty ->
   testGroup "Multiplicative Monoid"
   [ testProperty "one" $
       \a -> (one::a) * (a::a) == a && a * (one::a) == a
-  , testProperty "pow0p" $
-      \n a ->  pow0p n (a::a) == pow0pStd n a
-  , testProperty "(^)" $
-      \n a ->  (a::a)^(toInteger (n :: Natural)) == pow0pStd n a
+--  , testProperty "pow0p" $
+--      \n a ->  pow0p n (a::a) == pow0pStd n a
+--  , testProperty "(^)" $
+--      \n a ->  (a::a)^(toInteger (n :: Natural)) == pow0pStd n a
   ]
 
 isMultiplicativeGroup' :: forall a .
@@ -171,8 +171,8 @@ isMultiplicativeGroup' p = withTestProperty $ \testProperty ->
       \a -> (a::a) * (recip a) == (one::a) && (recip a) * a == (one::a)
   , testProperty "(/)" $
       \a -> (a::a) / a == (one::a)
-  , testProperty "pow" $
-      \n a ->  pow (n::Integer) (a::a) == powStd n a
-  , testProperty "(^^)" $
-      \n a ->  (a::a)^^(n :: Integer) == pow n a
+--  , testProperty "pow" $
+--      \n a ->  pow (n::Integer) (a::a) == powStd n a
+--  , testProperty "(^^)" $
+--      \n a ->  (a::a)^^(n :: Integer) == pow n a
   ]
