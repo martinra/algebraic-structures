@@ -1,3 +1,7 @@
+{-# LANGUAGE
+    FlexibleContexts
+  #-}
+
 module Math.Structure.Ring.Integral where
 
 
@@ -10,4 +14,6 @@ import Math.Structure.Multiplicative
 import Math.Structure.Ring.Ring
 
 
-class (Ring r, Commutative r) => IntegralDomain r
+class ( Ring r, Commutative r
+      , MultiplicativeSemigroup (NonZero r) )
+  => IntegralDomain r

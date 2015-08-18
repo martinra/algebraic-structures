@@ -35,8 +35,11 @@ mkCommutativeMonoidInstanceFromNum cxt t = sequence
 
 mkCommutativeMonoidInstanceFromNonZeroNum :: CxtQ -> TypeQ -> DecsQ
 mkCommutativeMonoidInstanceFromNonZeroNum cxt t = sequence
-  [ deriveInstance cxt nonzeroR (conT ''DecidableOne)
+  [ deriveInstance cxt nonzeroR (conT ''MultiplicativeMagma)
+  , deriveInstance cxt nonzeroR (conT ''MultiplicativeSemigroup)
   , deriveInstance cxt nonzeroR (conT ''MultiplicativeMonoid)
+  , deriveInstance cxt nonzeroR (conT ''DecidableOne)
+  , deriveInstance cxt nonzeroR (conT ''Commutative)
   ]
   where
   nonzeroR = appT (conT ''NonZero) t

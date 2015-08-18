@@ -1,3 +1,7 @@
+{-# LANGUAGE
+    FlexibleContexts
+  #-}
+
 module Math.Structure.Ring.Field
 where
 
@@ -11,4 +15,4 @@ import Math.Structure.Multiplicative
 import Math.Structure.Ring.Division
 
 
-class (DivisionRing r, Commutative r) => Field r
+class (DivisionRing r, Commutative r, Commutative (NonZero r)) => Field r
