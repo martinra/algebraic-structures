@@ -4,7 +4,7 @@ module Math.Structure.Ring
   , Distributive, Semiring, Rng, Rig
   , Ring, IntegralDomain, DivisionRing, Field
   , FactorialRing, Factored(..), factor
-  , PIDomain, gcd, xgcd
+  , PIDomain, gcd, xgcd, lcm
   , EuclideanDomain, quotRem, quot, rem
   , euclNorm, euclidean
   )
@@ -12,7 +12,7 @@ where
 
 import Prelude hiding ( (+), (-), negate, subtract
                       , (*), (/), recip, (^), (^^)
-                      , gcd
+                      , lcm, gcd
                       , quotRem, quot, rem
                       )
 

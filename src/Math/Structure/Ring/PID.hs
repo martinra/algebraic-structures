@@ -4,7 +4,7 @@ where
 
 import Prelude hiding ( (+), (-), negate, subtract
                       , (*), (/), recip, (^), (^^)
-                      , gcd, xgcd
+                      , lcm, gcd, xgcd
                       )
 
 import Math.Structure.Additive
@@ -16,3 +16,5 @@ import Math.Structure.Ring.Integral
 class IntegralDomain r => PIDomain r where
   gcd :: r -> r -> r
   xgcd :: r -> r -> (r,r,r)
+
+  lcm :: r -> r -> r

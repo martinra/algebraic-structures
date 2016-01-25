@@ -8,7 +8,7 @@ where
 import Control.Applicative ( (<$>) )
 import Prelude hiding ( (+), (-), negate, subtract
                       , (*), (/), recip, (^), (^^)
-                      , gcd
+                      , lcm, gcd
                       , quotRem, quot, rem
                       )
 import qualified Prelude as P
@@ -52,15 +52,23 @@ mkEuclideanDomainInstanceFromIntegral :: CxtQ -> TypeQ -> DecsQ
 mkEuclideanDomainInstanceFromIntegral cxt r =
   liftM mconcat $ sequence
   [ mkRingInstance cxt r
-  , mkEuclideanDomainInstanceFromIntegral' cxt r
+  , mkEuclideanDomainInstanceFromIntegral' cxt r [| P.gcd |] [| head .: euclidean |] [| P.lcm |]
   ]
 
-mkEuclideanDomainInstanceFromIntegral' :: CxtQ -> TypeQ -> DecsQ
-mkEuclideanDomainInstanceFromIntegral' cxt r = sequence
+mkEuclideanDomainInstanceFromIntegralWithCustomGCD :: CxtQ -> TypeQ -> ExpQ -> ExpQ -> ExpQ -> DecsQ
+mkEuclideanDomainInstanceFromIntegralWithCustomGCD cxt r gcdD xgcdD lcmD =
+  liftM mconcat $ sequence
+  [ mkRingInstance cxt r
+  , mkEuclideanDomainInstanceFromIntegral' cxt r gcdD xgcdD lcmD
+  ]
+
+mkEuclideanDomainInstanceFromIntegral' :: CxtQ -> TypeQ -> ExpQ -> ExpQ -> ExpQ -> DecsQ
+mkEuclideanDomainInstanceFromIntegral' cxt r gcdD xgcdD lcmD = sequence
   [ mkInstance cxt r [t|IntegralDomain|]
   , mkInstanceWith cxt r [t|PIDomain|]
-      [ mkDecl 'gcd [| P.gcd |]
-      , mkDecl 'xgcd [| head .: euclidean |]
+      [ mkDecl 'gcd gcdD
+      , mkDecl 'xgcd xgcdD
+      , mkDecl 'lcm lcmD
       ]
   , mkInstanceWith cxt r [t|EuclideanDomain|]
       [ mkDecl 'quotRem [| P.quotRem |]
