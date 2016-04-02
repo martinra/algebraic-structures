@@ -1,4 +1,4 @@
-name:                algebra-structures
+name:                algebraic-structures
 version:             0.1.0.0
 synopsis:            Type classes for basic algebraic structures
 license:             GPL-3
@@ -10,7 +10,7 @@ build-type:          Simple
 cabal-version:       >=1.10
 
 library
-  exposed-modules:     
+  exposed-modules:
     Math.Structure
 
     Math.Structure.Additive

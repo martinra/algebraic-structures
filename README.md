@@ -1,1 +1,1 @@
-# algebra-structures
+# algebraic-structures
