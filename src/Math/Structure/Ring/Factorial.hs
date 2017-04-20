@@ -14,7 +14,7 @@ import Math.Structure.Multiplicative
 import Math.Structure.Ring.Integral
 
 
-data Factored u r = Factored u (Vector (r,Natural))
+data Factored r = Factored (Unit r) (Vector (r,Natural))
 
 class IntegralDomain r => FactorialRing r where
-  factor :: r -> Factored r r
+  factor :: r -> Factored r

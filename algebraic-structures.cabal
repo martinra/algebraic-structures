@@ -44,6 +44,7 @@ library
     Math.Structure.Multiplicative.Magma
     Math.Structure.Multiplicative.Monoid
     Math.Structure.Multiplicative.Semigroup
+    Math.Structure.Multiplicative.Unit
 
     Math.Structure.Ring.Distributive
     Math.Structure.Ring.Division

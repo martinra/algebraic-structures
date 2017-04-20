@@ -2,7 +2,8 @@ module Math.Structure.Multiplicative
   ( MultiplicativeMagma, (*)
   , MultiplicativeSemigroup, pow1p
   , MultiplicativeMonoid, one, pow0p
-  , DecidableOne, isOne
+  , Unit(..), DecidableUnit(..)
+  , DecidableOne(..)
   , MultiplicativeGroup, (/), recip, pow, (^), (^^)
   , Commutative, CommutativeGroup
   , MultiplicativeSemigroupLeftAction, (*.)
@@ -21,3 +22,4 @@ import Math.Structure.Multiplicative.Group
 import Math.Structure.Multiplicative.Magma
 import Math.Structure.Multiplicative.Monoid
 import Math.Structure.Multiplicative.Semigroup
+import Math.Structure.Multiplicative.Unit
