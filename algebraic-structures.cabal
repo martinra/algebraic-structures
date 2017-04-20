@@ -3,11 +3,11 @@ version:             0.1.0.0
 synopsis:            Type classes for basic algebraic structures
 license:             GPL-3
 license-file:        LICENSE
-author:              Martin Westerholt-Raum
-maintainer:          ???
+author:              Martin Raum <martin@raum-brothers.eu>
+maintainer:          Martin Raum <martin@raum-brothers.eu>
 category:            Math
 build-type:          Simple
-cabal-version:       >=1.10
+cabal-version:       >=1.16
 
 library
   exposed-modules:
