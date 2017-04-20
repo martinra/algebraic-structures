@@ -41,6 +41,9 @@ deriving instance MultiplicativeSemigroup a => MultiplicativeSemigroup (Unit a)
 
 deriving instance MultiplicativeMonoid a => MultiplicativeMonoid (Unit a)
 
+-- we do not derive further classes, which would yield wrong
+-- constraints when plugged in by the typechecker
+{-
 deriving instance DecidableOne a => DecidableOne (Unit a)
 
 deriving instance MultiplicativeGroup a => MultiplicativeGroup (Unit a)
@@ -59,3 +62,4 @@ instance MultiplicativeSemigroupRightAction a s
 instance MultiplicativeLeftAction a s => MultiplicativeLeftAction (Unit a) s
 
 instance MultiplicativeRightAction a s => MultiplicativeRightAction (Unit a) s
+-}
