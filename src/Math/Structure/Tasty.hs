@@ -48,5 +48,6 @@ import Math.Structure.Tasty.Module
 import Math.Structure.Tasty.Multiplicative
 import Math.Structure.Tasty.NonZero
 import Math.Structure.Tasty.Ring
+import Math.Structure.Tasty.Unit
 
 import Math.Structure.Utility.Tasty
