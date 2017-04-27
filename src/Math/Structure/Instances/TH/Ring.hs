@@ -19,7 +19,7 @@ import Language.Haskell.TH
 
 import Math.Structure.Additive.DecidableZero
 import Math.Structure.Ring
-import Math.Structure.Utils.TH
+import Math.Structure.Utility.TH
 
 
 mkSemiringInstance :: CxtQ -> TypeQ -> DecsQ

@@ -21,7 +21,7 @@ import Math.Structure.Multiplicative
 import Math.Structure.Instances.TH.Additive
 import Math.Structure.Instances.TH.Multiplicative
 import Math.Structure.Instances.TH.Ring
-import Math.Structure.Utils.TH
+import Math.Structure.Utility.TH
 
 
 mkAbelianGroupInstanceFromNum (return []) [t|Integer|]

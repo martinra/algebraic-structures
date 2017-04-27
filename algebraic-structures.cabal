@@ -70,8 +70,8 @@ library
     Math.Structure.Tasty.NonZero.QuickCheck
     Math.Structure.Tasty.NonZero.SmallCheck
 
-    Math.Structure.Utils.Tasty
-    Math.Structure.Utils.TH
+    Math.Structure.Utility.Tasty
+    Math.Structure.Utility.TH
 
   build-depends:
       base

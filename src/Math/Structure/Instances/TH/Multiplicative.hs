@@ -15,7 +15,7 @@ import Language.Haskell.TH
 
 import Math.Structure.Additive.DecidableZero
 import Math.Structure.Multiplicative
-import Math.Structure.Utils.TH
+import Math.Structure.Utility.TH
 
 
 -- | Make commutative group instance of n, assuming Num n and zero != one

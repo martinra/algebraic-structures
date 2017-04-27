@@ -12,7 +12,7 @@ import qualified Prelude as P
 import Language.Haskell.TH
 
 import Math.Structure.Additive
-import Math.Structure.Utils.TH
+import Math.Structure.Utility.TH
 
 
 -- | Make abelean monoid instance of n, assuming Num n

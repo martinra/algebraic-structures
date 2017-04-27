@@ -20,7 +20,7 @@ import Math.Structure.Additive
 import Math.Structure.Additive.Semigroup ( sinnum1pStd )
 import Math.Structure.Additive.Monoid ( sinnum0pStd )
 import Math.Structure.Additive.Group ( sinnumStd )
-import Math.Structure.Utils.Tasty
+import Math.Structure.Utility.Tasty
 
 
 isAdditiveSemigroup :: ( Testable a, AdditiveSemigroup a )

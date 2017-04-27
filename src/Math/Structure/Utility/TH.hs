@@ -1,4 +1,4 @@
-module Math.Structure.Utils.TH
+module Math.Structure.Utility.TH
 where
 
 import Language.Haskell.TH

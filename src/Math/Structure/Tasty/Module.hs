@@ -17,7 +17,7 @@ import Test.Tasty
 
 import Math.Structure.Module
 import Math.Structure.Ring
-import Math.Structure.Utils.Tasty
+import Math.Structure.Utility.Tasty
 
 import Math.Structure.Tasty.Additive
 import Math.Structure.Tasty.Multiplicative

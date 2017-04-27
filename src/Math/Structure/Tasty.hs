@@ -30,6 +30,16 @@ module Math.Structure.Tasty
   , isRing
   , isEuclideanDomain
   , isField
+
+  , testPropertyQC
+  , testPropertySnC
+  , testPropertyQSC
+  , testPropertyQSnC
+
+  , runTestsQC
+  , runTestsSnC
+  , runTestsQSC
+  , runTestsQSnC
   )
 where
 
@@ -39,4 +49,4 @@ import Math.Structure.Tasty.Multiplicative
 import Math.Structure.Tasty.NonZero
 import Math.Structure.Tasty.Ring
 
-import Math.Structure.Utils.Tasty
+import Math.Structure.Utility.Tasty
