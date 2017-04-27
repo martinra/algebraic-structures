@@ -70,10 +70,6 @@ library
     Math.Structure.Tasty.NonZero.QuickCheck
     Math.Structure.Tasty.NonZero.SmallCheck
 
-    Math.Structure.Tasty.Unit
-    Math.Structure.Tasty.Unit.QuickCheck
-    Math.Structure.Tasty.Unit.SmallCheck
-
     Math.Structure.Utility.Tasty
     Math.Structure.Utility.TH
 
