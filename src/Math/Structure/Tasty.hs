@@ -31,6 +31,14 @@ module Math.Structure.Tasty
   , isEuclideanDomain
   , isField
 
+  , intertwiningMorphisms
+  , intertwiningInnerPairing
+  , intertwiningPairing
+  , intertwiningEndomorphisms
+  , intertwiningBinaryOperators
+  , intertwiningLeftActions
+  , intertwiningRightActions
+
   , testPropertyQC
   , testPropertySnC
   , testPropertyQSC
@@ -44,9 +52,11 @@ module Math.Structure.Tasty
 where
 
 import Math.Structure.Tasty.Additive
+import Math.Structure.Tasty.Intertwine
 import Math.Structure.Tasty.Module
 import Math.Structure.Tasty.Multiplicative
 import Math.Structure.Tasty.NonZero
 import Math.Structure.Tasty.Ring
 
 import Math.Structure.Utility.Tasty
+
