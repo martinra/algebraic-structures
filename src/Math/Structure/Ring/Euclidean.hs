@@ -4,7 +4,7 @@ where
 import Data.Composition ( (.:) )
 import Prelude hiding ( (+), (-), negate, subtract
                       , (*), (/), recip, (^), (^^)
-                      , gcd
+                      , lcm, gcd
                       , quotRem, quot, rem
                       )
 import Numeric.Natural ( Natural )
@@ -36,3 +36,8 @@ euclidean' es@((d,s,t):(d',s',t'):_)
   | otherwise = euclidean' $ (r,s'-q*s,t'-q*t):es
     where
     (q,r) = quotRem d' d 
+
+xlcm :: EuclideanDomain r => r -> r -> (r,r,r)
+xlcm a b =
+  let c = lcm a b
+  in  (c, c `quot` a, c `quot` b)
