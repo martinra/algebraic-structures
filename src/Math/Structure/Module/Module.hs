@@ -20,16 +20,19 @@ import Math.Structure.Ring.Ring
 
 class    ( Semiring r, AbelianGroup m
          , MultiplicativeLeftAction r m
-         , LinearSemiringLeftAction r m )
+         , LinearSemiringLeftAction r m
+         , NonUnitalLeftModule r m)
       => LeftModule r m
 
 class    ( Semiring r, AbelianGroup m
          , MultiplicativeRightAction r m
-         , LinearSemiringRightAction r m )
+         , LinearSemiringRightAction r m
+         , NonUnitalRightModule r m )
       => RightModule r m
 
 class    ( Commutative r
-         , LeftModule r m, RightModule r m )
+         , LeftModule r m, RightModule r m
+         , NonUnitalModule r m )
       => Module r m
 
 instance Ring r => LeftModule r r
