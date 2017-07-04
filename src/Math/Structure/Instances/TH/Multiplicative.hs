@@ -1,8 +1,4 @@
-{-# LANGUAGE
-    TemplateHaskell
-  , GeneralizedNewtypeDeriving
-  , StandaloneDeriving
-  #-}
+{-# LANGUAGE TemplateHaskell #-}
 
 module Math.Structure.Instances.TH.Multiplicative
 where

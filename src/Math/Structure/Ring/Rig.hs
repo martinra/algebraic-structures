@@ -1,7 +1,3 @@
-{-# LANGUAGE 
-    FlexibleInstances
-  #-}
-
 module Math.Structure.Ring.Rig where
 
 

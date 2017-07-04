@@ -1,7 +1,3 @@
-{-# LANGUAGE
-    MultiParamTypeClasses
-  #-}
-
 module Math.Structure.Module.Algebra
 where
 

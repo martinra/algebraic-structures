@@ -1,6 +1,4 @@
-{-# LANGUAGE
-    TemplateHaskell
-  #-}
+{-# LANGUAGE TemplateHaskell #-}
 
 module Math.Structure.Instances.TH.Additive
 where

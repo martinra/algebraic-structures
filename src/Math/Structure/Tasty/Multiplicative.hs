@@ -1,8 +1,4 @@
-{-# LANGUAGE
-    FlexibleContexts
-  , ConstraintKinds
-  , ScopedTypeVariables
-  #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 
 module Math.Structure.Tasty.Multiplicative where
 

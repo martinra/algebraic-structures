@@ -1,8 +1,3 @@
-{-# LANGUAGE
-    FlexibleInstances
-  , MultiParamTypeClasses
-  #-}
-
 module Math.Structure.Module.Module
 where
 

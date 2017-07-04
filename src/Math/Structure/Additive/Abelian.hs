@@ -1,7 +1,3 @@
-{-# LANGUAGE
-    ConstraintKinds
-  #-}
-
 module Math.Structure.Additive.Abelian
 where
 

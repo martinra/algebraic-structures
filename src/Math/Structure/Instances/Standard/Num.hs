@@ -1,10 +1,5 @@
-{-# LANGUAGE
-    TemplateHaskell
-  , TypeSynonymInstances
-  , FlexibleInstances
-  , StandaloneDeriving
-  , GeneralizedNewtypeDeriving
-  #-}
+{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TypeSynonymInstances #-}
 
 module Math.Structure.Instances.Standard.Num
 where

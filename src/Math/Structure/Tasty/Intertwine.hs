@@ -1,7 +1,3 @@
-{-# LANGUAGE
-    FlexibleContexts
-  #-}
-
 module Math.Structure.Tasty.Intertwine
 where
 

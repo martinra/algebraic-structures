@@ -1,9 +1,4 @@
-{-# LANGUAGE
-    FlexibleInstances
-  , FlexibleContexts
-  , MultiParamTypeClasses
-  , ScopedTypeVariables
-  #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 module Math.Structure.Tasty.NonZero.SmallCheck
 where
 

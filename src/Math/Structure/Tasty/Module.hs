@@ -1,7 +1,4 @@
-{-# LANGUAGE
-    FlexibleContexts
-  , ScopedTypeVariables
-  #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 
 module Math.Structure.Tasty.Module
 where

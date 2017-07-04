@@ -74,6 +74,17 @@ library
     Math.Structure.Utility.Tasty
     Math.Structure.Utility.TH
 
+  default-extensions:
+      ConstraintKinds
+    , FlexibleContexts
+    , FlexibleInstances
+    , GeneralizedNewtypeDeriving
+    , MultiParamTypeClasses
+    , MultiParamTypeClasses
+    , RankNTypes
+    , StandaloneDeriving
+    
+
   build-depends:
       base
     , composition

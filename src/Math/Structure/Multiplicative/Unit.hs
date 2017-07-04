@@ -1,10 +1,3 @@
-{-# LANGUAGE
-    FlexibleInstances
-  , GeneralizedNewtypeDeriving
-  , MultiParamTypeClasses
-  , StandaloneDeriving
-  #-}
-
 module Math.Structure.Multiplicative.Unit
 where
 

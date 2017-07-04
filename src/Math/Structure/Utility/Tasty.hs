@@ -1,10 +1,3 @@
-{-# LANGUAGE
-    ConstraintKinds
-  , FlexibleContexts
-  , FlexibleInstances
-  , RankNTypes
-  #-}
-
 module Math.Structure.Utility.Tasty
 where
 

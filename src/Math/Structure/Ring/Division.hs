@@ -1,8 +1,3 @@
-{-# LANGUAGE 
-    FlexibleInstances
-  , FlexibleContexts
-  #-}
-
 module Math.Structure.Ring.Division
 where
 

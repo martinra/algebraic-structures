@@ -1,8 +1,3 @@
-{-# LANGUAGE 
-    FlexibleInstances
-  , UndecidableInstances
-  #-}
-
 module Math.Structure.Ring.Semiring where
 
 

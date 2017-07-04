@@ -1,7 +1,3 @@
-{-# LANGUAGE
-    ConstraintKinds
-  #-}
-
 module Math.Structure.Multiplicative.Commutative
 where
 
