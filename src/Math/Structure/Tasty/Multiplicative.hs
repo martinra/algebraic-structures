@@ -135,14 +135,14 @@ isCommutative' :: forall a .
      ( Testable a, Commutative a )
   => Proxy a -> TestR TestTree
 isCommutative' p = withTestProperty $ \testProperty ->
-  testProperty "Multiplicative Commutative Class" $
+  testProperty "Multiplicative Commutative" $
                  \a b -> (a::a) * (b::a) == b * a
 
 isMultiplicativeSemigroup' :: forall a .
      ( Testable a, MultiplicativeSemigroup a )
   => Proxy a -> TestR TestTree
 isMultiplicativeSemigroup' p = withTestProperty $ \testProperty ->
-  testGroup "Multiplicative Semigroup Class"
+  testGroup "Multiplicative Semigroup"
   [ testProperty "associative" $
       \a b c -> (a::a) * ((b::a) * (c::a)) == (a * b) * c
 --  , testProperty "pow1p" $
@@ -166,7 +166,7 @@ isMultiplicativeGroup' :: forall a .
      ( Testable a, MultiplicativeGroup a )
   => Proxy a -> TestR TestTree
 isMultiplicativeGroup' p = withTestProperty $ \testProperty ->
-  testGroup "Multiplicative Group Class"
+  testGroup "Multiplicative Group"
   [ testProperty "recip" $
       \a -> (a::a) * (recip a) == (one::a) && (recip a) * a == (one::a)
   , testProperty "(/)" $

@@ -66,14 +66,14 @@ isAbelian' :: forall a .
               ( Testable a, Abelian a )
            => Proxy a -> TestR TestTree
 isAbelian' p = withTestProperty $ \testProperty ->
-               testProperty "Additive Abelian Class" $
+               testProperty "Additive Abelian" $
                  \a b -> (a::a) + (b::a) == b + a
 
 isAdditiveSemigroup' :: forall a .
                 ( Testable a, AdditiveSemigroup a )
              => Proxy a -> TestR TestTree
 isAdditiveSemigroup' p = withTestProperty $ \testProperty ->
-  testGroup "Additive Semigroup Class"
+  testGroup "Additive Semigroup"
   [ testProperty "associative" $
       \a b c -> (a::a) + ((b::a) + (c::a)) == (a + b) + c
   , testProperty "sinnum1p" $
@@ -95,7 +95,7 @@ isAdditiveGroup' :: forall a .
             ( Testable a, AdditiveGroup a )
          => Proxy a -> TestR TestTree
 isAdditiveGroup' p = withTestProperty $ \testProperty ->
-  testGroup "Additive Group Class" $
+  testGroup "Additive Group" $
   [ testProperty "negate" $
       \a -> (a::a) + (negate a) == (zero::a) && (negate a) + a == (zero::a)
   , testProperty "(-)" $
