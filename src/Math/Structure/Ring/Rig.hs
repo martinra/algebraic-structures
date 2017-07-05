@@ -10,4 +10,4 @@ import Math.Structure.Multiplicative
 import Math.Structure.Ring.Semiring
 
 
-class (Semiring r, MultiplicativeMonoid r) => Rig r
+class (Semiring r, MultiplicativeMonoid r, MultiplicativeGroup (Unit r)) => Rig r

@@ -34,5 +34,18 @@ instance Rng a => MultiplicativeSemigroupLeftAction a (Vector a) where
 instance Rng a => MultiplicativeSemigroupRightAction a (Vector a) where
   v .* a = V.map (*a) v
 
-instance ( Abelian a, Rng a ) => LinearSemiringLeftAction a (Vector a)
-instance ( Abelian a, Rng a ) => LinearSemiringRightAction a (Vector a)
+instance Rng a => LinearSemiringLeftAction a (Vector a)
+instance Rng a => LinearSemiringRightAction a (Vector a)
+
+
+instance Rng a => MultiplicativeSemigroupLeftAction (NonZero a) (Vector a) where
+  (NonZero a) *. v = V.map (a*) v
+
+instance Rng a => MultiplicativeSemigroupRightAction (NonZero a) (Vector a) where
+  v .* (NonZero a) = V.map (*a) v
+
+instance Ring a => MultiplicativeSemigroupLeftAction (Unit a) (Vector a) where
+  (Unit a) *. v = V.map (a*) v
+
+instance Ring a => MultiplicativeSemigroupRightAction (Unit a) (Vector a) where
+  v .* (Unit a) = V.map (*a) v
