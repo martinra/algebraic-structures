@@ -11,5 +11,5 @@ import Math.Structure.Ring.Ring
 
 
 class ( Ring r, Commutative r
-      , MultiplicativeSemigroup (NonZero r) )
+      , MultiplicativeMonoid (NonZero r) )
   => IntegralDomain r
