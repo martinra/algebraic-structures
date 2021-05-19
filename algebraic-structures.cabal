@@ -1,15 +1,46 @@
+cabal-version:       3.0
 name:                algebraic-structures
 version:             0.1.0.0
 synopsis:            Type classes for basic algebraic structures
-license:             GPL-3
+license:             GPL-3.0-only
 license-file:        LICENSE
 author:              Martin Raum <martin@raum-brothers.eu>
 maintainer:          Martin Raum <martin@raum-brothers.eu>
 category:            Math
 build-type:          Simple
-cabal-version:       >=1.16
+
+common common
+
+  build-depends:
+      base
+        >= 4.8  && < 4.17
+    , template-haskell
+        >= 2.10 && < 2.19
+
+  ghc-options:
+      -static
+      -O3
+
+  default-language:
+    Haskell2010
+
+  default-extensions:
+      ConstraintKinds
+    , FlexibleContexts
+    , FlexibleInstances
+    , GeneralizedNewtypeDeriving
+    , MultiParamTypeClasses
+    , MultiParamTypeClasses
+    , RankNTypes
+    , StandaloneDeriving
 
 library
+
+  import: common
+
+  hs-source-dirs:
+    src
+
   exposed-modules:
     Math.Structure
 
@@ -23,9 +54,6 @@ library
     Math.Structure.Instances.TH.Multiplicative
     Math.Structure.Instances.TH.Ring
 
-    Math.Structure.Tasty
-
-  other-modules:
     Math.Structure.Additive.Abelian
     Math.Structure.Additive.DecidableZero
     Math.Structure.Additive.Group
@@ -61,6 +89,28 @@ library
     Math.Structure.Instances.Standard.Num
     Math.Structure.Instances.Standard.Vector
 
+  other-modules:
+    Math.Structure.Utility.TH
+
+  build-depends:
+      composition
+        >= 1.0  && < 1.1
+    , vector
+        >= 0.11 && < 0.13
+
+library algebraic-structures-test
+
+  import: common
+
+  visibility: public
+
+  hs-source-dirs:
+    test
+
+  exposed-modules:
+    Math.Structure.Tasty
+
+  other-modules:
     Math.Structure.Tasty.Additive
     Math.Structure.Tasty.Intertwine
     Math.Structure.Tasty.Module
@@ -72,36 +122,22 @@ library
     Math.Structure.Tasty.NonZero.SmallCheck
 
     Math.Structure.Utility.Tasty
-    Math.Structure.Utility.TH
-
-  default-extensions:
-      ConstraintKinds
-    , FlexibleContexts
-    , FlexibleInstances
-    , GeneralizedNewtypeDeriving
-    , MultiParamTypeClasses
-    , MultiParamTypeClasses
-    , RankNTypes
-    , StandaloneDeriving
-    
 
   build-depends:
-      base
-    , composition
+      algebraic-structures
     , mtl
-    , natural-test
+        >= 2.2   && < 2.3
     , QuickCheck
+        >= 2.10  && < 2.15
+    , quickcheck-instances
+        >= 0.3   && < 0.4
     , smallcheck
+        >= 1.1.3 && < 1.3
     , tasty
+        >= 1.1   && < 1.4
     , tasty-hunit
+        >= 0.10  && < 0.11
     , tasty-quickcheck
+        >= 0.10  && < 0.11
     , tasty-smallcheck
-    , template-haskell
-    , vector
-
-  ghc-options:
-    -static
-    -O3
-
-  hs-source-dirs:      src
-  default-language:    Haskell2010
+        >= 0.8 && < 0.9

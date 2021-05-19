@@ -9,8 +9,8 @@ import Data.Proxy
 import Numeric.Natural ( Natural(..) )
 import Test.Tasty
 import Test.Tasty.HUnit
-import Test.Natural
 import Test.QuickCheck.Arbitrary ()
+import Test.QuickCheck.Instances.Natural ()
 
 import Math.Structure.Additive
 import Math.Structure.Additive.Semigroup ( sinnum1pStd )

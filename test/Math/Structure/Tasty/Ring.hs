@@ -1,3 +1,4 @@
+{-# LANGUAGE MonoLocalBinds #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
 module Math.Structure.Tasty.Ring where
@@ -13,7 +14,6 @@ import Data.Proxy
 import Numeric.Natural ( Natural(..) )
 import Test.Tasty
 import Test.Tasty.HUnit
-import Test.Natural
 import Test.QuickCheck.Arbitrary ()
 
 import Math.Structure.Ring
