@@ -4,6 +4,7 @@ where
 
 import Data.Functor.Identity
 import Test.SmallCheck.Series
+  ( Serial(..), Series, generate, list )
 
 import Math.Structure.Additive
 
